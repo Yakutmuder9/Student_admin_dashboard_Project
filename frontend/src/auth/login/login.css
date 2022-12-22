@@ -1,0 +1,505 @@
+.login {
+    width: 100vw;
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow-y: scroll;
+}
+
+.login-back-animated {
+    position: absolute;
+    width: 100vw;
+    height: 100vh;
+    background-image: radial-gradient(ellipse at center, #0c10198c 0%, #0b0b0e 90%), url("https://cdn.archilovers.com/projects/b_730_1a22fbda-e24d-4087-9778-4c4a6c21063b.jpg");
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+    z-index: 1;
+}
+
+.login_card {
+    width: 320px;
+    height: auto;
+    background: radial-gradient(ellipse at center, #0c1019 0%, #0b0b0e 100%);
+    padding: 30px 25px;
+    z-index: 2;
+    border-radius: 10px;
+}
+
+
+/*---form-stlye  */
+.form__group {
+    margin: 20px 0px;
+}
+
+.form__label {
+    font-size: 12px;
+    display: block;
+    transition: all 0.3s;
+    color: var(--white);
+    text-align: left;
+    transform: translateY(-60px);
+}
+
+.form__input {
+    color: #333;
+    font-size: 1.2rem;
+    padding: 1.5rem 2rem;
+    border-radius: 0.2rem;
+    background-color: rgb(255, 255, 255);
+    border: none;
+    width: 90%;
+    display: block;
+    border-bottom: 0.3rem solid transparent;
+    transition: all 0.3s;
+}
+.form__group input:focus {
+    border-bottom: 3px solid coral;
+}
+.form__input:placeholder-shown + .form__label {
+    opacity: 0;
+    visibility: hidden;
+    -webkit-transform: translateY(4rem);
+    transform: translateY(0rem);
+  }
+
+  
+
+
+.login .login_profile {
+    border-radius: 100px;
+    height: 80px;
+    width: 60px;
+    background: white;
+    margin-bottom: 40px;
+    margin: 0 auto;
+    position: relative;
+    top: 0px;
+    transform: scale(0);
+    animation-duration: 3s;
+    animation-name: slidein;
+    animation-iteration-count: infinite;
+    -webkit-animation: logo_in 1s 0.9s forwards;
+    animation: logo_in 1s 0.9s forwards;
+    display: flex;
+    justify-content: center;
+}
+
+.login .login_profile img {
+    position: relative;
+    top: 18px;
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+}
+
+
+
+.login .login_desc {
+    color: #BFBFCE;
+    font-size: 10px;
+    margin-top: 20px;
+    text-align: center;
+    animation-duration: 3s;
+    animation-name: slidein;
+    animation-iteration-count: infinite;
+    -webkit-animation: pop 0.5s 1.3s forwards;
+    animation: pop 0.5s 1.3s forwards;
+    position: relative;
+    opacity: 0;
+}
+
+.login .login_desc span {
+    color: var(--blue);
+    font-weight: 600;
+}
+
+.login.login_inputs {
+    margin-top: 50px;
+}
+
+.login form {
+    margin: 0;
+    padding: 0;
+}
+
+.login form input, .register select {
+    width: 100%;
+    padding: 10px;
+    color: #141416;
+    border: none;
+    border-radius: 3px;
+    -webkit-animation: pop 0.5s 1.6s forwards;
+    animation: pop 0.5s 1.6s forwards;
+    position: relative;
+    opacity: 0;
+    font-size: 13px;
+    outline: none;
+}
+
+.login button {
+    margin-top: 12px;
+    cursor: pointer;
+    border: 1px solid var(--blue);
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    padding: 10px 10px;
+    position: relative;
+    opacity: 0;
+    position: relative;
+    font-weight: 100;
+    color: white;
+    background: var(--blue);
+    box-shadow: 0px 2px var(--blue), 0px 0px 3px rgba(2, 2, 2, 0.17), 0px 0px rgba(255, 255, 255, 0.13) inset;
+    transition: all 0.24s;
+
+    width: 100%;
+    border-radius: 3px;
+    -webkit-animation: pop 0.5s 1.6s forwards;
+    animation: pop 0.5s 1.6s forwards;
+    font-size: 13px;
+}
+
+.login a, #db_label {
+    color: #487bfb;
+    text-decoration: none;
+    font-weight: 100;
+    font-size: 11px;
+    text-align: left;
+    position: relative;
+    -webkit-animation: pop 0.5s 2.2s forwards;
+    animation: pop 0.5s 2.2s forwards;
+    opacity: 0;
+    display: inline-block;
+    transition: all 0.24s;
+}
+
+.login .login_inputs a:hover {
+    color: var(--blue);
+}
+
+@-webkit-keyframes brightflash {
+    0% {
+        background: #141416;
+    }
+
+    50% {
+        background: white;
+    }
+
+    100% {
+        background: #141416;
+    }
+}
+
+@keyframes brightflash {
+    0% {
+        background: #141416;
+    }
+
+    50% {
+        background: white;
+    }
+
+    100% {
+        background: #141416;
+    }
+}
+
+@-webkit-keyframes bulge {
+    0% {
+        width: 60px;
+    }
+
+    20% {
+        width: 110px;
+    }
+
+    40% {
+        width: 67px;
+    }
+
+    60% {
+        width: 84px;
+    }
+
+    80% {
+        width: 78px;
+    }
+
+    100% {
+        width: 80px;
+    }
+}
+
+@keyframes bulge {
+    0% {
+        width: 60px;
+    }
+
+    20% {
+        width: 110px;
+    }
+
+    40% {
+        width: 67px;
+    }
+
+    60% {
+        width: 84px;
+    }
+
+    80% {
+        width: 78px;
+    }
+
+    100% {
+        width: 80px;
+    }
+}
+
+@-webkit-keyframes logo_in {
+    0% {
+        transform: scale(0);
+    }
+
+    20% {
+        transform: scale(1.1);
+    }
+
+    40% {
+        transform: scale(0.98);
+    }
+
+    60% {
+        transform: scale(1.012);
+    }
+
+    80% {
+        transform: scale(0.995);
+    }
+
+    100% {
+        transform: scale(1);
+    }
+}
+
+@keyframes logo_in {
+    0% {
+        transform: scale(0);
+    }
+
+    20% {
+        transform: scale(1.1);
+    }
+
+    40% {
+        transform: scale(0.98);
+    }
+
+    60% {
+        transform: scale(1.012);
+    }
+
+    80% {
+        transform: scale(0.995);
+    }
+
+    100% {
+        transform: scale(1);
+    }
+}
+
+@-webkit-keyframes pop {
+    0% {
+        opacity: 0;
+        top: 4px;
+    }
+
+    100% {
+        opacity: 1;
+        top: 0px;
+    }
+}
+
+@keyframes pop {
+    0% {
+        opacity: 0;
+        top: 4px;
+    }
+
+    100% {
+        opacity: 1;
+        top: 0px;
+    }
+}
+
+
+
+
+
+
+
+
+
+/* animated card style */
+.context {
+    width: 100%;
+    position: absolute;
+    top: 50vh;
+
+}
+
+.context h1 {
+    text-align: center;
+    color: #fff;
+    font-size: 50px;
+}
+
+
+.login-back-animated {
+    /* background: #4e54c8;  
+    background: -webkit-linear-gradient(to left, #8f94fb, #4e54c8);
+    */
+    width: 100vw;
+    height: 100vh;
+    position: absolute;
+
+
+}
+
+.circles {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+}
+
+.circles li {
+    position: absolute;
+    display: block;
+    list-style: none;
+    width: 20px;
+    height: 20px;
+    background: rgba(255, 255, 255, 0.2);
+    animation: animate 25s linear infinite;
+    bottom: -150px;
+
+}
+
+.circles li:nth-child(1) {
+    left: 25%;
+    width: 80px;
+    height: 80px;
+    animation-delay: 0s;
+}
+
+
+.circles li:nth-child(2) {
+    left: 10%;
+    width: 20px;
+    height: 20px;
+    animation-delay: 2s;
+    animation-duration: 12s;
+}
+
+.circles li:nth-child(3) {
+    left: 70%;
+    width: 20px;
+    height: 20px;
+    animation-delay: 4s;
+}
+
+.circles li:nth-child(4) {
+    left: 40%;
+    width: 60px;
+    height: 60px;
+    animation-delay: 0s;
+    animation-duration: 18s;
+}
+
+.circles li:nth-child(5) {
+    left: 65%;
+    width: 20px;
+    height: 20px;
+    animation-delay: 0s;
+}
+
+.circles li:nth-child(6) {
+    left: 75%;
+    width: 110px;
+    height: 110px;
+    animation-delay: 3s;
+}
+
+.circles li:nth-child(7) {
+    left: 35%;
+    width: 150px;
+    height: 150px;
+    animation-delay: 7s;
+}
+
+.circles li:nth-child(8) {
+    left: 50%;
+    width: 25px;
+    height: 25px;
+    animation-delay: 15s;
+    animation-duration: 45s;
+}
+
+.circles li:nth-child(9) {
+    left: 20%;
+    width: 15px;
+    height: 15px;
+    animation-delay: 2s;
+    animation-duration: 35s;
+}
+
+.circles li:nth-child(10) {
+    left: 85%;
+    width: 150px;
+    height: 150px;
+    animation-delay: 0s;
+    animation-duration: 11s;
+}
+
+
+
+@keyframes animate {
+
+    0% {
+        transform: translateY(0) rotate(0deg);
+        opacity: 1;
+        border-radius: 0;
+    }
+
+    100% {
+        transform: translateY(-1000px) rotate(720deg);
+        opacity: 0;
+        border-radius: 50%;
+    }
+
+}
+
+@media(max-width: 760px) {
+    .login-screen .container_inner__login .login {
+        position: absolute;
+        width: 100vw !important;
+        left: -5%;
+
+    }
+}
+
+@media(max-width: 448px){
+    .login{
+        overflow-y: scroll;
+    }
+    .login .login_card{
+        width: 90vw!important;
+        height: auto;
+
+    }
+}

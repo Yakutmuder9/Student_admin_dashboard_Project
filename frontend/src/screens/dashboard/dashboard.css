@@ -1,0 +1,34 @@
+.Dashboard {
+  width: 100vw;
+  height: 100vh;
+  overflow: hidden;
+}
+.leftSide{
+  width: auto!important;
+  background-color: #040432!important;
+  overflow-x: hidden!important;
+}
+.rightSide {
+  width: 100%;
+  height: 100vh !important;
+  overflow-x: hidden!important;
+  overflow-y: hidden!important;
+}
+.dashheader {
+  width: 100%;
+  height: 9vh;
+} 
+ .dashMain {
+  width: 100%;
+  height: 91vh;
+  overflow-y: scroll!important;
+  overflow-x: hidden!important;
+}
+.dashOutlet {
+  width: 100%;
+  height: 10vh;
+}
+.dashMainFooter {
+  width: 100%;
+  height: 40px;
+}

@@ -1,0 +1,161 @@
+.profile{
+    width: 100%;
+    height: auto;
+}
+.firstProfileBox{
+  background: linear-gradient(89.93deg, #9AC0E2 2.92%, rgba(255, 255, 255, 0.94) 106.97%);
+}
+.profileTop{
+    height: 13rem;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 20px;
+    box-shadow: 1px 2px 3px rgb(57, 57, 58);
+}
+.addProBtn{
+  transform: rotate(1deg);
+}
+#Groupfirends img{
+    width: 50px;
+    height: 50px;
+}
+.profileImg{
+    margin-left: 5vw;
+    display: flex;
+    border: 5px solid #040432;
+    width: 22vmin;
+    height: 22vmin;
+    border-radius: 50%;
+}
+.profilePicture{
+  width: 100;
+  height: 100%;
+  border-radius: 50%;
+  overflow: hidden;
+}
+.profileMid{
+    height: 25rem;
+    display: flex;
+}
+.profileMidStart, .profileMidCen,.profileMidEnd{
+    width: 100vw;
+    height: 60vh;
+    background: white;
+    box-shadow: 3px 2px 5px #040432;
+}
+.profileBot{
+    height: 25rem;
+    background: white;
+    box-shadow: 3px 2px 5px #040432;
+}
+
+
+/*-----rippel animation--------*/
+#addProjectripple{
+    overflow: visible!important;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.request-loader {
+    overflow: visible!important;
+    position: relative;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    height: 150px;
+    width: 150px;
+    border-radius: 100%;
+    background: #FFFFFF;
+    box-shadow: 0 0 20px 0 rgba(0, 0, 0, 0.25);
+  }
+  .request-loader span {
+    overflow: visible!important;
+    position: relative;
+    font-size: 72px;
+    top: 5px;
+    left: -5px;
+  }
+  .request-loader::after {
+    overflow: visible!important;
+    opacity: 0;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    position: absolute;
+    top: -8px;
+    left: -8px;
+    right: 0;
+    bottom: 0;
+    content: "";
+    height: 100%;
+    width: 100%;
+    border: 8px solid rgba(0, 0, 0, 0.2);
+    border-radius: 100%;
+    -webkit-animation-name: ripple;
+            animation-name: ripple;
+    -webkit-animation-duration: 3s;
+            animation-duration: 3s;
+    -webkit-animation-delay: 0s;
+            animation-delay: 0s;
+    -webkit-animation-iteration-count: infinite;
+            animation-iteration-count: infinite;
+    -webkit-animation-timing-function: cubic-bezier(0.65, 0, 0.34, 1);
+            animation-timing-function: cubic-bezier(0.65, 0, 0.34, 1);
+    z-index: -1;
+  }
+  .request-loader::before {
+    overflow: visible!important;
+    opacity: 0;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    position: absolute;
+    top: -8px;
+    left: -8px;
+    right: 0;
+    bottom: 0;
+    content: "";
+    height: 100%;
+    width: 100%;
+    border: 8px solid rgba(0, 0, 0, 0.2);
+    border-radius: 100%;
+    -webkit-animation-name: ripple;
+            animation-name: ripple;
+    -webkit-animation-duration: 3s;
+            animation-duration: 3s;
+    -webkit-animation-delay: 0.5s;
+            animation-delay: 0.5s;
+    -webkit-animation-iteration-count: infinite;
+            animation-iteration-count: infinite;
+    -webkit-animation-timing-function: cubic-bezier(0.65, 0, 0.34, 1);
+            animation-timing-function: cubic-bezier(0.65, 0, 0.34, 1);
+    z-index: -1;
+  }
+  
+  @-webkit-keyframes ripple {
+    from {
+      opacity: 1;
+      transform: scale3d(0.75, 0.75, 1);
+    }
+    to {
+      opacity: 0;
+      transform: scale3d(1.5, 1.5, 1);
+    }
+  }
+  
+  @keyframes ripple {
+    from {
+      opacity: 1;
+      transform: scale3d(0.75, 0.75, 1);
+    }
+    to {
+      opacity: 0;
+      transform: scale3d(1.5, 1.5, 1);
+    }
+  }

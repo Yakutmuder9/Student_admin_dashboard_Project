@@ -1,0 +1,52 @@
+#calenderBg {
+    width: 99% !important;
+    background: linear-gradient(
+      180.71deg,
+      #393b40 -52.8%,
+      rgba(33, 35, 39, 0) 211.15%
+    );
+  } 
+  #js-licensing {
+    display: none !important;
+  }
+  .e-schedule{
+    background: silver!important;
+  }
+  .e-control .e-schedule .e-lib .e-device e-keyboard{
+    background: rgb(0, 140, 255)!important;
+  }
+  
+  
+.eventBox{
+  background: linear-gradient(0deg, #040432 -14.17%, #3426AE 95.5%, #040432 119.1%);
+  
+}
+  
+/* 
+.e-appointment, .e-popup-header{
+  background: rgb(125, 183, 0)!important;
+  box-shadow: 0 8px 32px 0 rgba(7, 95, 63, 0.152);
+  backdrop-filter: blur(9px);
+  -webkit-backdrop-filter: blur(9px);
+  border-radius: 10px;
+  border: 1px solid rgba(255, 255, 255, 0.18);
+}
+#calenderBg td, .e-cell-popup{
+  overflow: hidden!important;
+background: rgba(13, 120, 207, 0.2);
+border-radius: 4px;
+box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+backdrop-filter: blur(5px);
+-webkit-backdrop-filter: blur(5px);
+border: 1px solid rgba(255, 255, 255, 0.3);
+}
+.e-popup-table tbody,.e-dlg-header-content, .e-dlg-content, .e-footer-content, #_dialog_wrapper{
+background: rgba(255, 255, 255, 0.412)!important;
+box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+backdrop-filter: blur(5px);
+-webkit-backdrop-filter: blur(5px);
+border: 1px solid rgba(255, 255, 255, 0.3);
+}
+#_dialog_wrapper{
+  border-radius: 10px;
+} */

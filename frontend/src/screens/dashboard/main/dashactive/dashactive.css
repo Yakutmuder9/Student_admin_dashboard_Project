@@ -1,0 +1,105 @@
+.dashActive{
+  width: 50vw;
+  height: 250vh!important;
+}
+.MuiDrawer-paperAnchorDockedLeft{
+    background: var(--nav-background)!important;
+    color: white!important;
+    box-shadow: 2px 4px 12px black!important;
+}
+.advideo{
+  width: 100%;
+}
+.cardTitel{
+    height: 80%;
+    width: 70%;
+}
+.cardImage {
+    border-radius: 5px;
+    height: 100%;
+    margin-left: 5px;
+    width: 30%;
+}
+.cardImage img{
+    width: 100%;
+    border-radius: 15px;
+    height: 80%;
+    box-shadow: 2px 4px 6px;
+}
+/*----Spinning Cart styels----------*/
+foreignObject{
+  color: black!important;
+}
+#SvgjsTspan1644, .apexcharts-element-hidden{
+  color: black!important;
+  background-color: red!important;
+}
+ tspan, title{
+  color: black!important;
+  background-color: red!important;
+}
+
+
+.apexcharts-tooltip{
+  color: white!important;
+}
+#prochart{
+  transform: translate(0%, -4%);
+}
+.barDiscription{
+  color: black;
+  margin: 10px 0px;
+  border-left: 1px solid silver;
+  width: 30%;
+}
+.barDiscriptionCont{
+  padding: 10px 10px 10px 10px;
+}
+#SvgjsTspan1345{
+  color: black!important;
+ }
+#chart{
+  padding-bottom: 20px!important;
+  width: 100%!important;
+  overflow: hidden;
+}
+#spiningChartbox{
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+}
+
+  .apexcharts-toolbar{
+    overflow: hidden !important;
+  }
+  .apexcharts-tooltip{
+    background: rgba(42, 42, 42, 0.786)!important;
+    border: none!important;
+  }
+  .apexcharts-tooltip-title{
+    background: rgba(32, 33, 36, 0.786)!important;
+    border: none!important;
+  }
+  
+
+
+  @media (max-width: 1200px) {
+    #dashFullfil {
+      height: auto;
+    }
+    #showCard {
+      width: 180px!important;
+    }
+  }
+  @media (max-width: 690px) {
+    #showCard {
+      align-items: left!important;
+      width: 190px!important;
+    }
+  } 
+  .mixedChart svg{
+    width: 100%!important;
+    height: 60%!important;
+  }
+
+ 

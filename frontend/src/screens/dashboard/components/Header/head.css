@@ -1,0 +1,111 @@
+.mydashheader #headerNav {
+    width: 100%;
+    height: 50px;
+    display: flex;
+    z-index: 20;
+    align-items: center;
+    justify-content: space-between;
+  }
+  
+  .logo {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+   .logo h1 {
+      width: 150px;
+      overflow: hidden;
+    font-size: 24px;
+    margin-right: 8vw;
+    cursor: pointer;
+  }
+  .logo ul {
+    display: flex;
+    align-items: center;
+  }
+  .logo ul li {
+    color: rgb(202, 202, 202);
+    margin: 2vmin;
+    cursor: pointer;
+  }
+  .logo ul li:hover {
+    margin-bottom: -5px;
+    border-radius: 2px;
+    padding-bottom: 2px;
+    overflow-y: hidden;
+    border-bottom: 3px solid var(--color2);
+  }
+  nav button {
+      padding: 10px 40px !important;
+      color: #040432!important;
+      background: none !important;
+      margin-right: 2vmin;
+      right: 0;
+      font-style: normal;
+      font-weight: 400;
+      font-size: 20px;
+      cursor: pointer;
+    } 
+  
+  #navLogo span, #NavBtnBurger{
+    padding: 0px!important;
+    margin: 0px!important;
+    font-size: 20px!important;
+  }
+  
+  .profileImage {
+    width: 30px!important;
+    height: 30px!important;
+    border-radius: 50%!important;
+    cursor: pointer;
+  }
+  
+  #topnavBar {
+    width: 100%;
+    height: auto;
+  }
+  #naveToggler {
+    background-color: #040432!important;
+    width: 100% !important;
+    height: auto;
+    left: -10vw;
+    margin: 0 0 0 10vw;
+    padding: 2vh 5vw;
+  }
+  #NavBtnBurger {
+    width: 50px;
+    height: 40px;
+    top: 10px;
+    right: 10px;
+    font-size: 20px !important;
+    position: absolute !important;
+  }
+  .navSerchBtn{
+    background-color: #040432!important;
+  }
+  #navLogo {
+    font-size: 1.7rem;
+    margin-bottom: 2vh;
+    font-weight: 500;
+    font-family: "Oswald", sans-serif;
+  }
+  Nav.Link{
+    font-size: 2.8vmin;
+    margin-bottom: 2vh;
+    font-weight: 500;
+    font-family: "Oswald", sans-serif;
+  }
+#imageBody{
+    height: 0px!important;
+    z-index: -1;
+}
+#dropImg{
+    height: 250px;
+    transform: translate(0, -100%)
+}
+  
+  @media(max-width: 960px){
+    #topnavBar{
+      margin-top: 0!important;
+    }
+  }  

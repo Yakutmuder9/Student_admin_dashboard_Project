@@ -1,0 +1,102 @@
+.inbox{
+  width: 100%;
+  height: 90vh;
+  display: flex;
+  padding-bottom: 50px;
+  flex-direction: column;
+  justify-content: space-between;
+}
+.inbox img {
+  border-radius: 50%;
+  height: 50px;
+  margin-top: -20px;
+  border: 2px solid rgb(0, 119, 255);
+  padding: 1px;
+}
+
+.inbox p {
+  font-weight: 400;
+  font-size: 20px;
+  margin-top: 10px;
+  margin-left: 10px;
+  margin-right: 10px;
+  overflow-wrap: break-word;
+}
+
+.inbox .msg {
+  display: flex;
+  padding: 20px 10px 0 20px;
+  margin: 10px;
+  border-radius: 20px;
+  box-shadow: 0 0 10px rgba(164, 164, 164, 0.986);
+  align-items: center;
+}
+
+.inbox .sent {
+  background-color: #8298fb;
+  color: white;
+  border-top-right-radius: 0px;
+  flex-direction: row-reverse;
+  padding: 20px 20px 0 10px;
+  text-align: end;
+  float: right;
+}
+
+.inbox .received {
+  border: 1px solid lightgray;
+  background-color: #FAFAFA;
+  border-top-left-radius: 0px;
+  float: left;
+}
+
+.inbox .sendMsg {
+  position: fixed;
+  bottom: 2px;
+  display: flex;
+  width: 80%;
+  z-index: 1;
+  border-top: 1px solid lightgray;
+  padding: 10px;
+  padding-bottom: 30px;
+  background-color: #fafafa;
+  box-shadow: 0 0 10px rgb(111, 110, 110);
+}
+
+.inbox .msgs {
+  margin: 110px 0;
+  display: flex;
+  flex-direction: column;
+}
+
+
+@media (max-width: 775px) {
+  .inbox p {
+    font-size: 20px;
+  }
+  .inbox .sent {
+    padding: 10px 10px 0 10px;
+  }
+  .inbox .received {
+    padding: 10px 10px 0 10px;
+  }
+  .inbox img {
+    height: 35px;
+    margin-top: -10px;
+  }
+}
+
+@media (max-width: 500px) {
+  .inbox p {
+    font-size: 15px;
+  }
+  .inbox .sent {
+    padding: 7px 7px 0 7px;
+  }
+  .inbox .received {
+    padding: 7px 7px 0 7px;
+  }
+  .inbox img {
+    height: 30px;
+    margin-top: -7px;
+  }
+}
