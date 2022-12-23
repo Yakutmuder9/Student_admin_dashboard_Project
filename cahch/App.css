@@ -7,10 +7,9 @@
   list-style: none;
   text-decoration: none;
   font-family: 'Oswald', Verdana, Arial, sans-serif;
-  /* overflow-x: hidden; */
+  letter-spacing: .5px;
 
 }
-
 :root{
 /*----------color-pallets----------*/
     --white:#fff;
@@ -39,29 +38,33 @@
 }
 
 ::-webkit-scrollbar-track {
-  background: #1e2643f0;
+  background: #010101;
 }
 
 ::-webkit-scrollbar-thumb {
-  background: linear-gradient(135deg, rgba(138, 175, 239, 0) 0%, rgb(4, 15, 67) 100%);
+  background: linear-gradient(135deg, rgba(40, 118, 252, 0) 0%, rgb(205, 186, 157) 100%);
   border-radius: 15px;
 }
 
 ::-webkit-scrollbar-thumb:hover {
-  background: rgb(114, 133, 254);
+  background: rgb(7, 17, 78);
 }
 
 
 .html{
   overflow-y: scroll;
+  background: var(--grey);
 }
 body{
   width: 100vw;
   height: 100vh;
+  overflow: hidden;
+  background: var(--grey);
 }
 .App{
   width: 100vw;
   height: auto;
+  background: var(--grey);
 }
 
 

@@ -2,7 +2,7 @@ import "./dashboard.css";
 import { Outlet } from "react-router-dom";
 import SideNav from "./components/sidenav/Sidebar";
 import Header from "./components/Header/Header";
-import useRedirectLoggedOutUser from "./components/customHook/useRedirectLoggedOutUser";
+// import useRedirectLoggedOutUser from "./components/customHook/useRedirectLoggedOutUser";
 
 const Dashboard = () => {
   // useRedirectLoggedOutUser("/");

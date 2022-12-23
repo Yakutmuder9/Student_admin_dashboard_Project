@@ -1,0 +1,82 @@
+
+.CourseStoreBody{
+  width: 100%;
+  height: auto;
+  padding-bottom: 80vh;
+}
+.CourseSearchBox{
+  height: 50px;
+}
+.MuiTab-textColorPrimary{
+  color: white!important;
+}
+.coursegrops{
+  height: 200px;
+}
+.fetchCousebox{
+  height: 100px!important;
+  padding: 0!important;
+}
+.MuiBox-root .css-19kzrtu{
+  padding: 0px!important;
+  margin: 8px!important;
+}
+.SeachBtn{
+  margin-left: -5%!important;
+}
+.eventBox{
+  background: var(--nav-background);
+}
+.listEvent{
+  margin-right: 20px;
+  width: auto!important;
+  height: 100%;
+}
+
+
+
+.ImageBody {
+  position: relative;
+  width: 50%;
+  background: rgb(174,222,250);
+background: radial-gradient(circle, rgba(174,222,250,1) 0%, rgba(9,9,9,1) 100%);
+}
+
+.image {
+  opacity: 1;
+  display: block;
+  width: 100%;
+  height: auto;
+  color: rgb(36, 33, 33);
+  transition: .5s ease;
+  backface-visibility: hidden;
+}
+
+.middle {
+  transition: .5s ease;
+  opacity: 0;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  -ms-transform: translate(-50%, -50%);
+  text-align: center;
+}
+
+.ImageBody:hover .image {
+  opacity: 0.6;
+}
+
+.ImageBody:hover .middle {
+  opacity: 1;
+}
+
+.CourseImageBtn {
+  background-color: #0415819a;
+  color: rgb(18, 17, 17);
+  font-size: 16px;
+  cursor: pointer;
+  border: 2px solid white;
+  border-radius: 10px;
+  padding: 12px 40px;
+}

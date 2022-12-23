@@ -5,39 +5,24 @@ import ForgotPassword from './auth/forgotPass/ForgotPass';
 import Login from './auth/login/Login';
 import Register from './auth/register/Register';
 import ResetPassword from './auth/resetPass/ResetPass';
-import PrivateRoute from "./components/privateRoute/PrivateRoute";
-// import HomeScreen from "./screens/visiters/HomePage"
+import PrivateRoute from "../frontend/src/components/privateRoute/PrivateRoute";
 import Loader from './components/loading/loader';
-import { useDispatch } from 'react-redux';
-import { getLoginStatus } from './redux/feature/auth/authService';
-import { SET_LOGIN } from './redux/feature/auth/authSlice';
-import Dashboard from './screens/dashboard/Dashboard';
-// import DashActivity from './screens/dashboard/main/dashactive/DashActivity';
-// import Course from "./screens/dashboard/main/course/Course";
-// import Newcourse from "./screens/dashboard/main/course/Newcourse/Newcourse";
-// import NewcourseDetail from "./screens/dashboard/main/course/Newcourse/SingleCourse";
-// import Event from "./screens/dashboard/main/event/Event";
-// import Cart from "./screens/dashboard/main/cart/Cart";
-// import Profile from "./screens/dashboard/main/Profile/Profile";
-// import Resources from "./screens/dashboard/main/resources/Resources";
-// import Assessment from "./screens/dashboard/main/assesment/Assessment";
-// import Inbox from "./screens/dashboard/main/Inbox/Inbox";
-// import Support from "./screens/dashboard/main/support/Support";
-// import ResourcesDetail from "./screens/dashboard/main/resources/ResourcesDetail";
-// import Payment from "./screens/dashboard/main/payment/payment";
+import Dashboard from './pages/dashboard/Dashboard.js';
+import DashActivity from './pages/dashboard/main/dashactive/DashActivity';
+import Course from "./pages/dashboard/main/course/Course";
+import Newcourse from "./pages/dashboard/main/course/Newcourse/Newcourse";
+import NewcourseDetail from "./pages/dashboard/main/course/Newcourse/SingleCourse";
+import Event from "./pages/dashboard/main/event/Event";
+import Cart from "./pages/dashboard/main/cart/Cart";
+import Profile from "./pages/dashboard/main/Profile/Profile";
+import Resources from "./pages/dashboard/main/resources/Resources";
+import Assessment from "./pages/dashboard/main/assesment/Assessment";
+import Inbox from "./pages/dashboard/main/Inbox/Inbox";
+import Support from "./pages/dashboard/main/support/Support";
+import ResourcesDetail from "./pages/dashboard/main/resources/ResourcesDetail";
+import Payment from "./pages/dashboard/main/payment/payment";
 
 const App = () => {
-  const [userRole, setUserRole] = useState("admin")
-  const dispatch = useDispatch();
-
-  useEffect(() => {
-    async function loginStatus() {
-      const status = await getLoginStatus();
-
-      dispatch(SET_LOGIN(status));
-    }
-    loginStatus();
-  }, [dispatch]);
 
 
   return (
@@ -49,11 +34,9 @@ const App = () => {
         <Route path="forgotPassword" element={<ForgotPassword />} />
         <Route path="resetpassword/:resetToken" element={<ResetPassword />} />
 
-
         <Route element={<PrivateRoute />}>
-        <Route path="*" element={<Loader />} />
           <Route path="/" element={<Dashboard />}>
-            {/* <Route path="dashboard" exact element={<DashActivity />} />
+            <Route path="dashboard" exact element={<DashActivity />} />
             <Route path="course" element={<Course />} />
             <Route path="course/:id" element={<Course />} />
             <Route path="newcourse" element={<Newcourse />} />
@@ -66,9 +49,9 @@ const App = () => {
             <Route path="resources" element={<Resources />} />
             <Route path="resources/:id" element={<ResourcesDetail />} />
             <Route path="profile" element={<Profile />} />
-            <Route path="support" element={<Support />} /> */}
-
+            <Route path="support" element={<Support />} />
           </Route>
+          <Route path="*" element={<Loader />} />
         </Route>
         <Route path="*" element={<Loader />} />
       </Routes>
