@@ -4,12 +4,12 @@ import { Link } from "react-router-dom";
 import { useLocation, useNavigate } from "react-router";
 import Message from "../../../components/LoadingError/Error";
 import axios from "axios";
-import Loading from "../../../components/LoadingError/Loading";
-import Footer from "../../../components/Footer/Footer"
+import Loading from "../../../components/loading/dataFeaching/loader";
+import Footer from "../../../components/footer/Footer"
 import { useDispatch, useSelector } from "react-redux";
 import 'react-toastify/dist/ReactToastify.css';
 import { ToastContainer, toast } from 'react-toastify';
-import { addToCart } from "../../../../redux/features/cart/cartSlices";
+import { addToCart } from "../../../redux/feature/cart/cartSlices";
 
 const SingleCourse = () => {
   const dispatch = useDispatch();

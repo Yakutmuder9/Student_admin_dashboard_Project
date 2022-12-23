@@ -2,9 +2,9 @@ import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import Card from '@mui/material/Card';
-import Loading from "../../../components/LoadingError/Loading";
+import Loading from "../../../components/loading/dataFeaching/loader";
 import Message from "../../../components/LoadingError/Error";
-import Footer from '../../../components/Footer/Footer'
+import Footer from '../../../components/footer/Footer'
 import "./CourseStore.css";
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
@@ -24,9 +24,8 @@ import FavoriteIcon from "@mui/icons-material/Favorite";
 import ShareIcon from "@mui/icons-material/Share";
 import Button from "@mui/material/Button";
 import CardContent from "@mui/material/CardContent";
-import { getCourses as listCourses } from "../../../../redux/features/courses/CourseActions";
-import { addToCart } from "../../../../redux/features/cart/cartSlices";
-
+import { getCourses as listCourses } from "../../../redux/feature/course/courseService";
+import { addToCart } from "../../../redux/feature/cart/cartSlices"
 function TabPanel(props) {
   const { children, value, index, ...other } = props;
 

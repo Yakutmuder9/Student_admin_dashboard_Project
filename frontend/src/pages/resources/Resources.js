@@ -3,7 +3,7 @@ import clsx from "clsx";
 import useLazyLoad from "./useLazyLoad";
 import posts from './data.json';
 import { FaSearch } from "react-icons/fa";
-import { Books } from "../../../app/shared/Books";
+import { Books } from "../../data/shared/Books";
 import {Link} from "react-router-dom"
 import "./resource.css";
 import Loading from "./Loading"

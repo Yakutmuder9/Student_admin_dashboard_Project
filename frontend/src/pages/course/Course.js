@@ -1,7 +1,8 @@
 import { useState } from 'react'
 import { Link } from 'react-router-dom';
-import Footer from "../../components/Footer/Footer"
+import Footer from "../../components/footer/Footer"
 import "./Newcourse/CourseStore.css"
+
 const Course = () => {
   const [courses, setCourses] = useState([
     {

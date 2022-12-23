@@ -3,10 +3,10 @@ import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { useDispatch } from "react-redux";
 import { toast } from "react-toastify";
-import { userLogin } from '../../redux/feature/auth/authSlice'
-import { SET_LOGIN, SET_NAME, SET_USER } from "../../redux/feature/auth/authSlice";
-import Loader from "../../components/loading/Loading"
-import { validateEmail, loginUser } from '../../redux/feature/auth/authService'
+import { userLogin } from '../../../redux/feature/auth/authSlice'
+import { SET_LOGIN, SET_NAME, SET_USER } from "../../../redux/feature/auth/authSlice";
+import Loader from "../../../components/loading/entrance/Loading"
+import { validateEmail, loginUser } from '../../../redux/feature/auth/authService'
 
 
 const Login = () => {

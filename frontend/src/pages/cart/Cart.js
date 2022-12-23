@@ -7,7 +7,7 @@ import {
   decreaseCart,
   getTotals,
   removeFromCart,
-} from "../../../redux/features/cart/cartSlices";
+} from "../../redux/feature/cart/cartSlices";
 import { Link , useNavigate} from "react-router-dom";
 import "./cart.css";
 
