@@ -3,78 +3,25 @@ const mongoose = require("mongoose");
 const bcrypt = require("bcryptjs");
 const jwt = require("jsonwebtoken");
 const { stringify } = require("querystring");
+const { roles } = require('../utils/constants');
 
 const UserSchema = new mongoose.Schema({
-  firstName: {
-    type: String,
-    required: [true, "Please provide First name"],
-    minLength: [3, "First name must be atleast 3 letter"],
-  },
-  lastName: {
-    type: String,
-    required: [true, "Please provide username"],
-    minLength: [3, "Last name must be atleast 3 letter"],
-  },
   email: {
     type: String,
-    required: [true, "Please provide email address"],
-    unique: [true, "Email has already been registered"],
-    match: [
-      /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/,
-      "Please provide a valid email",
-    ],
+    required: true,
+    lowercase: true,
+    unique: true,
   },
   password: {
     type: String,
-    required: [true, "Please add a password"],
-    minLength: [6, "Password must be up to 6 characters"],
-    select: false,
-  },
-  profile_pic: {
-    type: String,
-    required: [true, "Please add a photo"],
-    default: "https://i.ibb.co/4pDNDk1/avatar.png",
-  },
-  dateOfBirth: {
-    type: Date,
-    require: true
-  },
-  hobbies: {
-    type: String,
-    maxLength: [250, "Bio must not be more than 250 characters"],
-    default: "bio",
+    required: true,
   },
   role: {
     type: String,
-    default: "student"
+    enum: [roles.admin, roles.moderator, roles.client],
+    default: roles.client,
   },
-  relationShip: String,
-  featured: Boolean,
-  status: Boolean,
-  gender: {
-    type: String,
-    enum: ["Male", "Female"]
-  },
-  friends_count: Number,
-  education: String,
-  location: String,
-  friends: {
-    firstName: String,
-    lastName: String,
-    email: String,
-    image: {
-      type: String,
-      default: "https://i.ibb.co/4pDNDk1/avatar.png"
-    },
-    
-  },
-  education: String,
-  noFriend: String,
-},
-  {
-    timestamps: true,
-  }
-);
+});
 
 UserSchema.pre("save", async function (next) {
   if (!this.isModified("password")) {
@@ -83,6 +30,10 @@ UserSchema.pre("save", async function (next) {
   const salt = await bcrypt.genSalt(10);
   const hashedPassword = await bcrypt.hash(this.password, salt);
   this.password = hashedPassword;
+  
+  if (this.email === process.env.ADMIN_EMAIL.toLowerCase()) {
+    this.role = roles.admin;
+  }
   next();
 });
 

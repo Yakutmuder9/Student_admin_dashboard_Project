@@ -7,14 +7,16 @@
   list-style: none;
   text-decoration: none;
   font-family: 'Oswald', Verdana, Arial, sans-serif;
-  overflow-x: hidden;
-
+  /* overflow-x: hidden; */
 }
 
 :root{
 /*----------color-pallets----------*/
     --white:#fff;
     --dark-blue: #24303c;
+    --dark-green: #0c211d;
+    --light-blue: #EBF3FF;
+
     --dark: #0000;
     --grey: #efefef;
     --gold: #ccb99d;
@@ -35,20 +37,20 @@
 
 /*---Side Scroll Bar ---*/
 ::-webkit-scrollbar {
-  width: 1.2vmin;
+  width: 0.7vmin;
 }
 
 ::-webkit-scrollbar-track {
-  background: #1e2643f0;
+  background: #2e2e2ef0;
 }
 
 ::-webkit-scrollbar-thumb {
-  background: linear-gradient(135deg, rgba(138, 175, 239, 0) 0%, rgb(4, 15, 67) 100%);
+  background: linear-gradient(135deg, rgba(138, 175, 239, 0) 0%, rgb(177, 214, 241) 100%);
   border-radius: 15px;
 }
 
 ::-webkit-scrollbar-thumb:hover {
-  background: rgb(114, 133, 254);
+  background: rgb(191, 206, 213);
 }
 
 
@@ -62,6 +64,7 @@ body{
 .App{
   width: 100vw;
   height: auto;
+  /* background-color: var(--light-blue); */
 }
 
 

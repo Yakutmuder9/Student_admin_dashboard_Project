@@ -1,15 +1,14 @@
-require("dotenv").config({ path: './.env' })
+require("dotenv").config({path: './.env'})
 var createError = require('http-errors');
 var express = require('express');
 var cors = require('cors');
 var path = require('path');
 var cookieParser = require('cookie-parser');
 var logger = require('morgan');
-const { ensureLoggedIn } = require('connect-ensure-login');
 const config = require('./config')
 const bodyParser = require('body-parser');
 const mongoose = require('mongoose');
-const { roles } = require("./utils/constants")
+
 var indexRouter = require('./routes/index');
 
 mongoose.set('strictQuery', true);
@@ -40,40 +39,20 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
- 
-const IsAdmin = (req, res, next) => {
-  
-  if (req.user.role === roles.admin) {
-    next();
-  } else {
-    req.flash('warning', 'you are not Authorized to see this route');
-    res.redirect('/');
-  }
-}
+
 
 // Connect Routes
-app.use('/', indexRouter);
-app.use("/auth", require("./routes/auth"));
-app.use("/user",
-  ensureLoggedIn({ redirectTo: '/auth/login' }),
-  require("./routes/user"));
-
-app.use("/admin",
-  // ensureLoggedIn({ redirectTo: '/auth/login' }),
-  IsAdmin,
-  require("./routes/admin"));
+app.use('/api', indexRouter);
+app.use("/api/auth", require("./routes/auth"));
+app.use("/api/private", require("./routes/private")); 
 
 // catch 404 and forward to error handler
-app.use(function (req, res, next) {
+app.use(function(req, res, next) {
   next(createError(404));
-}); 
-
-
-
-
+});
 
 // error handler
-app.use(function (err, req, res, next) {
+app.use(function(err, req, res, next) {
   // set locals, only providing error in development
   res.locals.message = err.message;
   res.locals.error = req.app.get('env') === 'development' ? err : {};
