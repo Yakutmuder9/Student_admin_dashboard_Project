@@ -1,6 +1,6 @@
 const mongoose = require('mongoose');
 
-const postSchema = new mongoose.Schema({
+const courseSchema = new mongoose.Schema({
     created_at: Date,
     user: {
         type: String,
@@ -39,6 +39,6 @@ const postSchema = new mongoose.Schema({
 );
 
 //Compile
-const Post = mongoose.model('Post', postSchema);
+const Course = mongoose.model('Course', courseSchema);
 
-module.exports =  Post;
+module.exports =  Course;

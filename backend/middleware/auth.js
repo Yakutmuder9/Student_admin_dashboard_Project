@@ -28,4 +28,9 @@ const protect = asyncHandler(async (req, res, next) => {
   }
 });
 
-module.exports = protect;
+const checkRole = (roles) => (req, res, next) =>
+    roles.includes(req.user?.role)
+        ? next()
+        : res.status(401).send({ message: 'Unauthorized', status: false } );
+
+module.exports = protect, checkRole;

@@ -1,5 +1,4 @@
 import './App.css';
-import { useState, useEffect } from 'react';
 import { Routes, Route } from "react-router-dom";
 
 import { ColorModeContext, useMode } from "./theme";
@@ -64,6 +63,8 @@ const App = () => {
               </Route>
               <Route path="*" element={<Loader />} />
             </Route>
+
+            <Route path="logout" element={<Login />} />
             <Route path="*" element={<Loader />} />
           </Routes>
         </ThemeProvider>

@@ -1,19 +1,19 @@
 const asyncHandler = require("express-async-handler");
-const Post = require("../models/Post");
+const Course = require("../models/Course");
 const User = require("../models/User");
 const { fileSizeFormatter } = require("../utils/fileUpload");
 const cloudinary = require("../utils/cloudinary");
 
 
-//get posts
-const fetchAllUsersPosts = asyncHandler(async (req, res) => {
-  const posts = await Post.find().sort("-createdAt");
-  res.status(200).json(posts);
+//get courses
+const fetchAllUsersCourses = asyncHandler(async (req, res) => {
+  const courses = await Course.find().sort("-createdAt");
+  res.status(200).json(courses);
 });
 
 
-//Create post
-const createPost = asyncHandler(async (req, res) => {
+//Create course
+const createCourse = asyncHandler(async (req, res) => {
   const { description, like, share, comments, image } = req.body;
  
   //   Validation
@@ -45,8 +45,8 @@ const createPost = asyncHandler(async (req, res) => {
     };
   }
   try {
-    // Create post
-    const post = await Post.create({
+    // Create course
+    const course = await Course.create({
       user: req.user.id,
       firstName: req.user.firstName,
       lastName: req.user.lastName,
@@ -57,8 +57,8 @@ const createPost = asyncHandler(async (req, res) => {
       comments,
       image: fileData
     });
-  console.log(post)
-    res.status(201).json(post);
+  console.log(course)
+    res.status(201).json(course);
   } catch (error) {
     res.status(500);
     throw new Error("Dupplicate Error");
@@ -67,42 +67,42 @@ const createPost = asyncHandler(async (req, res) => {
 });
 
 
-//get posts
-const getPosts = asyncHandler(async (req, res) => {
-  const posts = await Post.find({ user: req.user.id }).sort("-createdAt");
-  res.status(200).json(posts);
+//get courses
+const getCourses = asyncHandler(async (req, res) => {
+  const courses = await Course.find({ user: req.user.id }).sort("-createdAt");
+  res.status(200).json(courses);
 });
 
-//get post
-const getPost = asyncHandler(async (req, res) => {
-  const post = await Post.findById(req.params.id);
-  // if post doesnt exist
-  if (!post) {
+//get course
+const getCourse = asyncHandler(async (req, res) => {
+  const course = await Course.findById(req.params.id);
+  // if course doesnt exist
+  if (!course) {
     res.status(404);
-    throw new Error("post not found");
+    throw new Error("course not found");
   }
-  // Match post to its user
-  if (post.user.toString() !== req.user.id) {
+  // Match course to its user
+  if (course.user.toString() !== req.user.id) {
     res.status(401);
     throw new Error("User not authorized");
   }
-  res.status(200).json(post);
+  res.status(200).json(course);
 });
 
-//update post
-const updatePost = asyncHandler(async (req, res) => {
+//update course
+const updateCourse = asyncHandler(async (req, res) => {
   const { name, category, quantity, price, description } = req.body;
   const { id } = req.params;
 
-  const post = await Post.findById(id);
+  const course = await Course.findById(id);
 
-  // if post doesnt exist
-  if (!post) {
+  // if course doesnt exist
+  if (!course) {
     res.status(404);
-    throw new Error("post not found");
+    throw new Error("course not found");
   }
-  // Match post to its user
-  if (post.user.toString() !== req.user.id) {
+  // Match course to its user
+  if (course.user.toString() !== req.user.id) {
     res.status(401);
     throw new Error("User not authorized");
   }
@@ -130,8 +130,8 @@ const updatePost = asyncHandler(async (req, res) => {
     };
   }
 
-  // Update post
-  const updatedPost = await Post.findByIdAndUpdate(
+  // Update course
+  const updatedCourse = await Course.findByIdAndUpdate(
     { _id: id },
     {
       name,
@@ -139,7 +139,7 @@ const updatePost = asyncHandler(async (req, res) => {
       quantity,
       price,
       description,
-      image: Object.keys(fileData).length === 0 ? post?.image : fileData,
+      image: Object.keys(fileData).length === 0 ? course?.image : fileData,
     },
     {
       new: true,
@@ -147,24 +147,24 @@ const updatePost = asyncHandler(async (req, res) => {
     }
   );
 
-  res.status(200).json(updatedPost);
+  res.status(200).json(updatedCourse);
 });
 
-//Delete post
-const deletePost = asyncHandler(async (req, res) => {
-  const post = await Post.findById(req.params.id);
-  // if post doesnt exist
-  if (!post) {
+//Delete course
+const deleteCourse = asyncHandler(async (req, res) => {
+  const course = await Course.findById(req.params.id);
+  // if course doesnt exist
+  if (!course) {
     res.status(404);
-    throw new Error("post not found");
+    throw new Error("course not found");
   }
-  // Match post to its user
-  if (post.user.toString() !== req.user.id) {
+  // Match course to its user
+  if (course.user.toString() !== req.user.id) {
     res.status(401);
     throw new Error("User not authorized");
   }
-  await post.remove();
-  res.status(200).json({ message: "post deleted." });
+  await course.remove();
+  res.status(200).json({ message: "course deleted." });
 });
 
-module.exports = {fetchAllUsersPosts, createPost, getPosts, getPost, updatePost, deletePost };
+module.exports = {fetchAllUsersCourses, createCourse, getCourses, getCourse, updateCourse, deleteCourse };
