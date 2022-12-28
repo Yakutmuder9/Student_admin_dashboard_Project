@@ -29,8 +29,47 @@ const protect = asyncHandler(async (req, res, next) => {
 });
 
 const checkRole = (roles) => (req, res, next) =>
-    roles.includes(req.user?.role)
-        ? next()
-        : res.status(401).send({ message: 'Unauthorized', status: false } );
+  roles.includes(req.user?.role)
+    ? next()
+    : res.status(401).send({ message: 'Unauthorized', status: false });
 
-module.exports = protect, checkRole;
+
+const IsSupperAdmin = function (req, res, next) {
+  if (req.user.role !== 'superadmin') {
+    const err = new Error('You are not authorized');
+    err.status = 403;
+    return next(err);
+  }
+  return next();
+};
+
+// const IsSupperAdmin = (req, res)=> {
+// try {
+//   const sudents = await User.find({ role: "sudent" }).select("-password");
+//   res.status(200).json(sudents);
+// } catch (error) {
+//   res.status(404).json({ message: error.message });
+//  }
+// };
+
+const IsInstructor = function (req, res, next) {
+  if (req.user.role !== 'instructor') {
+    const err = new Error('You are not authorized');
+    err.status = 403;
+    return next(err);
+  }
+
+  return next();
+};
+
+
+const IsStudent = function (req, res, next) {
+  if (req.user.role !== 'student') {
+    const err = new Error('You are not authorized');
+    err.status = 403;
+    return next(err);
+  }
+  return next();
+};
+
+module.exports = { protect, IsSupperAdmin, IsInstructor, IsStudent };

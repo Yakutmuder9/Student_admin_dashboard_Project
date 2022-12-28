@@ -5,6 +5,7 @@ const jwt = require("jsonwebtoken");
 const { stringify } = require("querystring");
 
 const UserSchema = new mongoose.Schema({
+  username: { type: String, required: true, unique: true },
   firstName: {
     type: String,
     required: [true, "Please provide First name"],
@@ -14,6 +15,15 @@ const UserSchema = new mongoose.Schema({
     type: String,
     required: [true, "Please provide username"],
     minLength: [3, "Last name must be atleast 3 letter"],
+  },
+  username: { 
+    type: String,
+    required: [true, "Please provide username"],
+    unique: [true, "Username has already been registered"],
+    match: [
+      /^(?=.{8,20}$)(?![_.])(?!.*[_.]{2})[a-zA-Z0-9._]+(?<![_.])$/,
+      "Please provide a valid username",
+    ]
   },
   email: {
     type: String,
@@ -50,7 +60,7 @@ const UserSchema = new mongoose.Schema({
     enum: ['student', 'instructor', 'superadmin']
   },
   relationShip: String,
-  featured:  {
+  featured: {
     default: true,
     type: Boolean
   },
@@ -71,7 +81,7 @@ const UserSchema = new mongoose.Schema({
       type: String,
       default: "https://i.ibb.co/4pDNDk1/avatar.png"
     },
-    
+
   },
   education: String,
   noFriend: String,

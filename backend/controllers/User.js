@@ -5,7 +5,7 @@ const cloudinary = require("../utils/cloudinary");
 
 
 //get users
-const fetchAllUsersUsers = asyncHandler(async (req, res) => {
+const getAllUsersUsers = asyncHandler(async (req, res) => {
   const users = await User.find().sort("-createdAt");
   res.status(200).json(users);
 });
@@ -89,80 +89,49 @@ const getUser = asyncHandler(async (req, res) => {
 
 //update user
 const updateUser = asyncHandler(async (req, res) => {
-  const { name, category, quantity, price, description } = req.body;
-  const { id } = req.params;
+  const user = await User.findById(req.user._id);
 
-  const user = await User.findById(id);
+  if (user) {
+    const {  _id, firstName, lastName, username,  email, profile_pic, dateOfBirth, hobbies } = user;
+    
+    user._id = req.body._id || _id;
+    user.firstName = req.body.firstName || firstName;
+    user.lastName = req.body.lastName || lastName;
+    user.username = req.body.username || username;
+    user.email = req.body.email || email;
+    user.profile_pic = req.body.profile_pic || profile_pic;
+    user.dateOfBirth = req.body.dateOfBirth || dateOfBirth;
+    user.hobbies = req.body.hobbies || hobbies;
 
-  // if user doesnt exist
-  if (!user) {
+    const updatedUser = await user.save();
+    res.status(200).json({
+      _id: updatedUser._id,
+      firstName: updatedUser.firstName,
+      lastName: updatedUser.lastName,
+      username: updatedUser.username,
+      email: updatedUser.email,
+      profile_pic: updatedUser.profile_pic,
+      dateOfBirth: updatedUser.dateOfBirth,
+      hobbies: updatedUser.hobbies,
+    });
+  } else {
     res.status(404);
-    throw new Error("user not found");
+    throw new Error("User not found");
   }
-  // Match user to its user
-  if (user.user.toString() !== req.user.id) {
-    res.status(401);
-    throw new Error("User not authorized");
-  }
-
-  // Handle Image upload
-  let fileData = {};
-  if (req.file) {
-    // Save image to cloudinary
-    let uploadedFile;
-    try {
-      uploadedFile = await cloudinary.uploader.upload(req.file.path, {
-        folder: "Pinvent App",
-        resource_type: "image",
-      });
-    } catch (error) {
-      res.status(500);
-      throw new Error("Image could not be uploaded");
-    }
-
-    fileData = {
-      fileName: req.file.originalname,
-      filePath: uploadedFile.secure_url,
-      fileType: req.file.mimetype,
-      fileSize: fileSizeFormatter(req.file.size, 2),
-    };
-  }
-
-  // Update user
-  const updatedUser = await User.findByIdAndUpdate(
-    { _id: id },
-    {
-      name,
-      category,
-      quantity,
-      price,
-      description,
-      image: Object.keys(fileData).length === 0 ? user?.image : fileData,
-    },
-    {
-      new: true,
-      runValidators: true,
-    }
-  );
-
-  res.status(200).json(updatedUser);
 });
 
 //Delete user
 const deleteUser = asyncHandler(async (req, res) => {
-  const user = await User.findById(req.params.id);
+  const user = await User.findById(req.user._id);
+  // const user = await User.findById(req.params.id);
   // if user doesnt exist
   if (!user) {
     res.status(404);
     throw new Error("user not found");
   }
-  // Match user to its user
-  if (user.user.toString() !== req.user.id) {
-    res.status(401);
-    throw new Error("User not authorized");
-  }
+
   await user.remove();
   res.status(200).json({ message: "user deleted." });
 });
 
-module.exports = {fetchAllUsersUsers, createUser, getUsers, getUser, updateUser, deleteUser };
+module.exports = {getAllUsersUsers, createUser, getUsers, getUser, updateUser, deleteUser };

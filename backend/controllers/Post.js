@@ -15,12 +15,12 @@ const fetchAllUsersPosts = asyncHandler(async (req, res) => {
 //Create post
 const createPost = asyncHandler(async (req, res) => {
   const { description, like, share, comments, image } = req.body;
- 
-  //   Validation
-  // if (!description || !req.file) {
-  //   res.status(400);
-  //   throw new Error("Please fill in all fields");
-  // }
+  
+    // Validation
+  if (!description ) {
+    res.status(400);
+    throw new Error("Please fill in all fields");
+  }
 
   // Handle Image upload 
   let fileData = {};

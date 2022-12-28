@@ -3,7 +3,8 @@ const mongoose = require('mongoose');
 const postSchema = new mongoose.Schema({
     created_at: Date,
     user: {
-        type: String,
+         type: mongoose.Schema.Types.ObjectId, 
+         required: true 
     },
     description: {
         type: String
