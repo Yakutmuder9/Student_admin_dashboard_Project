@@ -135,6 +135,7 @@ export const resetPassword = async (userData, resetToken) => {
 export const getLoginStatus = async () => {
   try {
     const response = await fetch(`${BACKEND_URL}/api/auth/loggedin`);
+    console.log(response.data);
     return response.data;
   } catch (error) {
     const message =

@@ -14,7 +14,7 @@ const generateToken = (id) => {
 
 //  Register user
 const register = asyncHandler(async (req, res) => {
-  const { firstName, lastName, email, password, gender
+  const { firstName, lastName, username, email, password, gender
     , dateOfBirth, role } = req.body;
 
 
@@ -30,10 +30,11 @@ const register = asyncHandler(async (req, res) => {
   const user = await User.create({
     firstName,
     lastName,
+    username,
+    email,
     gender,
     dateOfBirth,
     role,
-    email,
     password,
   });
 
@@ -49,12 +50,13 @@ const register = asyncHandler(async (req, res) => {
   });
 
   if (user) {
-    const { _id, firstName, email, password, gender,
+    const { _id, firstName, username, email, password, gender,
       dateOfBirth, role } = user;
     res.status(201).json({
       _id,
       firstName,
       lastName,
+      username,
       email,
       password,
       gender,
@@ -71,7 +73,8 @@ const register = asyncHandler(async (req, res) => {
 // Login user
 const login = asyncHandler(async (req, res) => {
   const { email, password } = req.body;
-
+  let refreshTokens = [];
+  
   // Check if email and password is provided
   if (!email || !password) {
     return next(new ErrorResponse("Please provide an email and password", 400));
@@ -98,8 +101,21 @@ const login = asyncHandler(async (req, res) => {
     expires: new Date(Date.now() + 1000 * 86400),
   });
 
+  // -------
+     // Create a refresh token
+     const refreshToken = jwt.sign(
+      { userId: user._id },
+      process.env.REFRESH_TOKEN_SECRET,
+      {
+        expiresIn:  process.env.REFRESH_TOKEN_EXPIRES_TIME,
+      },
+    );
+
+    // Set refersh token in refreshTokens array
+    refreshTokens.push(refreshToken);
+  // ---------
   if (user && passwordIsCorrect) {
-    res.json({ ...user._doc, token })
+    res.json({ ...user._doc, token, refreshTokens })
   } else {
     res.status(400);
     throw new Error("Invalid email or password");

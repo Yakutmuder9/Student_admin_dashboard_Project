@@ -60,6 +60,7 @@
 body{
   width: 100vw;
   height: 100vh;
+  overflow-x: hidden;
 }
 .App{
   width: 100vw;
@@ -74,4 +75,10 @@ body{
 }
 #react-loading{
   padding-top: 45vh;
+}
+.MuiTypography-root .MuiTypography-body1 .MuiCardHeader-subheader .css-1adgybj-MuiTypography-root{
+  background: red!important;
+}
+.MuiTypography-root .MuiTypography-body1 .MuiCardHeader-subheader{
+  background: red!important;
 }

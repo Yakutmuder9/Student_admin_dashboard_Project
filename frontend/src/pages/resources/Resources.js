@@ -15,13 +15,13 @@ const Card = ({ title, thumbnailUrl, isbn, shortDescription, authors }) => {
 
   return (
     <>
-      <div class="booklist grid rounded">
-        <div class="item blog ">
-          <div class="title p-3">
+      <div className="booklist grid rounded">
+        <div className="item blog ">
+          <div className="title p-3">
             <h4 className="overflow-hidden">{title}</h4>
             <p>ISBN: {isbn}</p>
           </div>
-          <div class="desc d-flex p-3">
+          <div className="desc d-flex p-3">
             <img src={thumbnailUrl} alt='' />
             <div className="" id="bookContent">
               <p className="text-white">
@@ -45,10 +45,9 @@ const LoadingPosts = () => {
   const loadPages = [1, 2, 3, 4, 5, 6 , 7, 8];
   return (
     <div className="grid grid-cols-3 gap-4 content-start mt-4">
-      {loadPages.map(num => {
-        return <div class="w-full rounded overflow-hidden shadow-lg ">
+      {loadPages.map((num, i) => {
+        return <div className="w-full rounded overflow-hidden shadow-lg " key={i}>
           <Loading />
-
         </div>
       })}
     </div>
@@ -85,21 +84,21 @@ const Resources = () => {
     <div className=" p-3 ">
       <h1 className="ps-3 mt-2 overflow-hidden">Resources</h1>
       <div className="container">
-        <div class="input-group ">
-          <div class="form-outline w-50 ">
+        <div className="input-group ">
+          <div className="form-outline w-50 ">
             <input
               type="text"
               id="form1"
-              class="form-control py-2"
+              className="form-control py-2"
               placeholder="Search Books here..."
               onChange={handleChange}
             />
-            <label class="form-label text-warning" for="form1">
+            <label className="form-label text-warning" htmlFor="form1">
               Search
             </label>
           </div>
 
-          <a type="button" class="bg-light h-100 px-4 py-2" >
+          <a type="button" className="bg-light h-100 px-4 py-2" >
             <FaSearch className="text-secondary" />
           </a>
         </div>
@@ -114,12 +113,14 @@ const Resources = () => {
             } else if (post.title.toLowerCase().includes(searchField.toLowerCase())) {
               return post;
             }
-          }).map(image => {
+          })
+          .map((image, _id) => {
 
             return <>
-              <Card title={image["title"]} thumbnailUrl={image["thumbnailUrl"]} authors={image["authors"]} shortDescription={image["shortDescription"]} isbn={image["isbn"]} />
+              <Card title={image["title"]} thumbnailUrl={image["thumbnailUrl"]} authors={image["authors"]} shortDescription={image["shortDescription"]} isbn={image["isbn"]} key={_id} />
             </>
-          })}
+          })
+          }
 
       </div>
       {searchField === ''? <div ref={triggerRef} className={clsx("trigger", { visible: loading })}>

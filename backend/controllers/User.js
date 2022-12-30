@@ -12,7 +12,7 @@ const getAllUsersUsers = asyncHandler(async (req, res) => {
 
 //Create user
 const createUser = asyncHandler(async (req, res) => {
-  const { description, like, share, comments, image } = req.body;
+  const { description, like, share, comments } = req.body;
  
   //   Validation
   // if (!description || !req.file) {
@@ -55,7 +55,7 @@ const createUser = asyncHandler(async (req, res) => {
       comments,
       image: fileData
     });
-  console.log(user)
+    
     res.status(201).json(user);
   } catch (error) {
     res.status(500);

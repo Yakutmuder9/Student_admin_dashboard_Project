@@ -49,7 +49,7 @@ const MyProSidebar = () => {
   const location = useLocation();
   const { pathname} = location
   const splitLocation = pathname.split("/")[1]
-console.log(splitLocation)
+
   const theme = useTheme();
   const colors = tokens(theme.palette.mode);
   const [selected, setSelected] = useState(`${splitLocation}`);

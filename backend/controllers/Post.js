@@ -1,6 +1,5 @@
 const asyncHandler = require("express-async-handler");
 const Post = require("../models/Post");
-const User = require("../models/User");
 const { fileSizeFormatter } = require("../utils/fileUpload");
 const cloudinary = require("../utils/cloudinary");
 
@@ -15,9 +14,10 @@ const fetchAllUsersPosts = asyncHandler(async (req, res) => {
 //Create post
 const createPost = asyncHandler(async (req, res) => {
   const { description, like, share, comments, image } = req.body;
-  
-    // Validation
-  if (!description ) {
+
+  console.log(req.file);
+  // Validation
+  if (!description && !req.file) {
     res.status(400);
     throw new Error("Please fill in all fields");
   }
@@ -44,6 +44,7 @@ const createPost = asyncHandler(async (req, res) => {
       fileSize: fileSizeFormatter(req.file.size, 2),
     };
   }
+
   try {
     // Create post
     const post = await Post.create({
@@ -57,7 +58,6 @@ const createPost = asyncHandler(async (req, res) => {
       comments,
       image: fileData
     });
-  console.log(post)
     res.status(201).json(post);
   } catch (error) {
     res.status(500);
@@ -65,7 +65,6 @@ const createPost = asyncHandler(async (req, res) => {
   }
 
 });
-
 
 //get posts
 const getPosts = asyncHandler(async (req, res) => {
@@ -91,7 +90,7 @@ const getPost = asyncHandler(async (req, res) => {
 
 //update post
 const updatePost = asyncHandler(async (req, res) => {
-  const { name, category, quantity, price, description } = req.body;
+  const { description, like, share, comments } = req.body;
   const { id } = req.params;
 
   const post = await Post.findById(id);
@@ -129,16 +128,49 @@ const updatePost = asyncHandler(async (req, res) => {
       fileSize: fileSizeFormatter(req.file.size, 2),
     };
   }
+  // if (post) {
+  //   const { user, firstName, lastName, profile_pic, description, like, share, comments, image} = post;
+
+  //   post.user = req.body.user || user;
+  //   post.firstName = req.body.firstName || firstName;
+  //   post.lastName = req.body.lastName || lastName;
+  //   post.profile_pic = req.body.profile_pic || profile_pic;
+  //   post.description = req.body.description || description;
+  //   post.like = req.body.like || like;
+  //   post.share = req.body.share || share;
+  //   post.comments = req.body.comments || comments;
+  //   post.image = req.body.image || image;
+
+  //   const updatedUser = await post.save();
+  //   res.status(200).json({
+  //     user: updatedUser._id,
+  //     firstName: updatedUser.firstName,
+  //     lastName: updatedUser.lastName,
+  //     profile_pic: updatedUser.username,
+  //     description: updatedUser.email,
+  //     like: updatedUser.profile_pic,
+  //     share: updatedUser.dateOfBirth,
+  //     comments: updatedUser.hobbies,
+  //     image: Object.keys(fileData).length === 0 ? post?.image : fileData
+  //   });
+
+  // } else {
+  //   res.status(404);
+  //   throw new Error("User not found");
+  // }
 
   // Update post
   const updatedPost = await Post.findByIdAndUpdate(
     { _id: id },
     {
-      name,
-      category,
-      quantity,
-      price,
+      user: req.user._id,
+      firstName: req.user.firstName,
+      lastName: req.user.firstName,
+      profile_pic: req.user.firstName,
       description,
+      like,
+      share,
+      comments,
       image: Object.keys(fileData).length === 0 ? post?.image : fileData,
     },
     {
@@ -167,4 +199,4 @@ const deletePost = asyncHandler(async (req, res) => {
   res.status(200).json({ message: "post deleted." });
 });
 
-module.exports = {fetchAllUsersPosts, createPost, getPosts, getPost, updatePost, deletePost };
+module.exports = { fetchAllUsersPosts, createPost, getPosts, getPost, updatePost, deletePost };

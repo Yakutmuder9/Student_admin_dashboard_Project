@@ -5,7 +5,6 @@ const jwt = require("jsonwebtoken");
 const { stringify } = require("querystring");
 
 const UserSchema = new mongoose.Schema({
-  username: { type: String, required: true, unique: true },
   firstName: {
     type: String,
     required: [true, "Please provide First name"],
@@ -21,8 +20,9 @@ const UserSchema = new mongoose.Schema({
     required: [true, "Please provide username"],
     unique: [true, "Username has already been registered"],
     match: [
-      /^(?=.{8,20}$)(?![_.])(?!.*[_.]{2})[a-zA-Z0-9._]+(?<![_.])$/,
-      "Please provide a valid username",
+      /^[a-zA-Z0-9](_(?!(\.|_))|\.(?!(_|\.))|[a-zA-Z0-9]){6,18}[a-zA-Z0-9]$/,
+      // ^(?=.{8,20}$)(?![_.])(?!.*[_.]{2})[a-zA-Z0-9._]+(?<![_.])$
+      "Please provide a valid username" 
     ]
   },
   email: {
