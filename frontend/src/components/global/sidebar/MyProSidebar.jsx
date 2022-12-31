@@ -6,7 +6,7 @@ import { useSidebarContext } from "./sidebarContext";
 
 import { Link } from "react-router-dom";
 import { tokens } from "../../../theme";
-import { useTheme, Box, Typography, IconButton, Card } from "@mui/material";
+import { useTheme, Box, Typography, Card } from "@mui/material";
 import HomeOutlinedIcon from "@mui/icons-material/HomeOutlined";
 import PeopleOutlinedIcon from "@mui/icons-material/PeopleOutlined";
 import ContactsOutlinedIcon from "@mui/icons-material/ContactsOutlined";
