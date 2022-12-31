@@ -1,7 +1,8 @@
 import axios from "axios";
 import { toast } from "react-toastify";
+import PrivateRoute from "../../../components/privateRoute/PrivateRoute";
 
-const BACKEND_URL ='http://localhost:5000'
+const BACKEND_URL = 'http://localhost:5000'
 // const BACKEND_URL = process.env.REACT_APP_BACKEND_URL
 
 export const validateEmail = (email) => {
@@ -33,8 +34,8 @@ export const registerUser = async (userData) => {
 
 // Login User
 export const loginUser = async (userData) => {
- 
-  
+
+
   try {
     const response = await axios.post(
       `${BACKEND_URL}/api/auth/login`,
@@ -49,7 +50,7 @@ export const loginUser = async (userData) => {
       (error.response && error.response.data && error.response.data.message) ||
       error.message ||
       error.toString();
-    toast.error( message);
+    toast.error(message);
   }
 
   // try {
@@ -66,7 +67,7 @@ export const loginUser = async (userData) => {
 
   //   if (response.status === 200) {
   //     let data = await response.json();
-     
+
   //     return data
   //   }
   //   // if (response.statusText === "OK") {
@@ -133,8 +134,7 @@ export const resetPassword = async (userData, resetToken) => {
 // Get Login Status
 export const getLoginStatus = async () => {
   try {
-    const response = await fetch(`${BACKEND_URL}/api/auth/loggedin`);
-    console.log(response.data);
+    const response = await axios.get(`${BACKEND_URL}/api/auth/loggedin`);
     return response.data;
   } catch (error) {
     const message =
@@ -165,7 +165,7 @@ export const getUser = async () => {
 export const updateUser = async (formData) => {
   try {
     const response = await axios.patch(
-      `/api/private/updateuserdata`,
+      `/api/user/updateuser`,
       formData
     );
     return response.data;

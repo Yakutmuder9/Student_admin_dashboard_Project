@@ -120,6 +120,23 @@ const updateUser = asyncHandler(async (req, res) => {
   }
 });
 
+//update user
+const updateTheme = asyncHandler(async (req, res) => {
+  const user = await User.findById(req.user._id);
+
+  if (user) {
+    user.featured = req.body.featured;
+
+    const updatedUser = await user.save();
+    res.status(200).json({
+      featured: updatedUser.featured,
+    });
+  } else {
+    res.status(404);
+    throw new Error("User not found");
+  }
+});
+
 //Delete user
 const deleteUser = asyncHandler(async (req, res) => {
   const user = await User.findById(req.user._id);
@@ -134,4 +151,4 @@ const deleteUser = asyncHandler(async (req, res) => {
   res.status(200).json({ message: "user deleted." });
 });
 
-module.exports = {getAllUsersUsers, createUser, getUsers, getUser, updateUser, deleteUser };
+module.exports = {getAllUsersUsers, createUser, getUsers, getUser, updateUser,  updateTheme, deleteUser };

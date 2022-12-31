@@ -113,7 +113,7 @@ const MyProSidebar = () => {
                 mt="18px"
               >
                 <Typography variant="h3" color={colors.grey[100]}>
-                  <h2 >WKU Dash</h2>
+                  <span >WKU Dash</span>
                 </Typography>
 
                 <Card

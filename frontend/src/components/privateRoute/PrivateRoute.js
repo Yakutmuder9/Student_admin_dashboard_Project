@@ -1,28 +1,19 @@
 import { Navigate, Outlet } from "react-router-dom";
-import { useEffect } from "react";
-import { useDispatch, useSelector } from "react-redux";
-import { selectIsLoggedIn } from "../../redux/feature/auth/authSlice";
-import { SET_LOGIN } from "../../redux/feature/auth/authSlice";
+import {  useSelector } from "react-redux";
+import useRedirectLoggedOutUser from "../../pages/auth/customHook/useRedirectLoggedOutUser";
 
 const PrivateRoute = () => {
-  const dispatch = useDispatch()
+  // useRedirectLoggedOutUser('/login')
 
-  const isLoggedIn = useSelector((state) => state.auth);
+  const logginStatus = useSelector((state) => state.auth);
+  const { isLoggedIn } = logginStatus
 
-  useEffect(() => {
-    dispatch(SET_LOGIN);
-  }, [isLoggedIn, dispatch]);
- 
   return (
-
     isLoggedIn ? (
       <Outlet />
     ) : (
-
       <Navigate to="/login" replace={true} />
-
     )
-
   );
 };
 

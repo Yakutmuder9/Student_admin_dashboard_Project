@@ -1,5 +1,5 @@
-import { useContext } from "react";
-import { ColorModeContext, tokens } from "../../theme";
+import { useContext, useState } from "react";
+import { ColorModeContext, tokens, useMode } from "../../theme";
 import { useTheme, Box, IconButton, InputBase } from "@mui/material";
 import LightModeOutlinedIcon from "@mui/icons-material/LightModeOutlined";
 import DarkModeOutlinedIcon from "@mui/icons-material/DarkModeOutlined";
@@ -12,6 +12,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { useEffect } from "react";
 import Badge from './Badge';
 import CardHeader from '@mui/material/CardHeader';
+import axios from 'axios';
 
 const Topbar = () => {
   const theme = useTheme();
@@ -19,14 +20,30 @@ const Topbar = () => {
   const colorMode = useContext(ColorModeContext);
   const { toggleSidebar, broken, rtl } = useProSidebar();
   const dispatch = useDispatch()
+  const user = useSelector((state) => state.auth?.user);
+  const [themeToggle, setThemeToggle] = useState(true)
 
-  const user = useSelector((state) => state.auth.user);
+  const toggleStatus = async () => {
+    const themeStatus = { featured: themeToggle}
+    fetch('http://localhost:5000/api/user/theme', {
+      headers: {
+        'Accept': 'application/json',
+        'Content-Type': 'application/json'
+      },
+      method: 'patch',                                                              
+      body: JSON.stringify( { featured: false } )                                        
+    })
+  }
+
+
+
+
   useEffect(() => {
 
   }, [dispatch, user])
 
   return (
-    <Box display="flex" justifyContent="space-between" p={1} style={{background: "#544ee6"}}>
+    <Box display="flex" justifyContent="space-between" p={1} style={{ background: "#544ee6" }}>
       <Box display="flex">
 
         {broken && !rtl && (
@@ -53,7 +70,14 @@ const Topbar = () => {
       </Box>
 
       <Box display="flex">
-        <IconButton onClick={colorMode.toggleColorMode}>
+        <IconButton 
+          onClick={() => {
+            colorMode.toggleColorMode();
+            toggleStatus();
+          }}>
+        {/* onClick={() => {
+          colorMode.toggleColorMode; toggleStatus;}} */}
+          
           {theme.palette.mode === "dark" ? (
 
             <LightModeOutlinedIcon />
@@ -66,8 +90,8 @@ const Topbar = () => {
         </IconButton>
 
         <CardHeader
-          title={<span>{user.firstName.replace(/^./, str => str.toUpperCase())}</span>}
-          subheader={user.role}
+          // title={<span>{user?.firstName.replace(/^./, str => str.toUpperCase())}</span>}
+          subheader={user?.role}
           className="p-0 px-2 m-0"
         />
         <IconButton
