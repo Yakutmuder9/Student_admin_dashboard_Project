@@ -37,8 +37,8 @@ const StyledBadge = styled(Badge)(({ theme }) => ({
 
 export default function BadgeAvatars(prop) {
     const role = prop.user?.role
-    const imgStyle = {border: `2px solid ${(role == 'superadmin')? '#BAFC5D': (role == 'instructor'? "#000" : "#fff")}`}
-    console.log(role);
+    const imgStyle = {border: `2px solid ${(role == 'superadmin')? '#BAFC5D': (role == 'instructor'? "#544ee6" : "#fff")}`}
+    
   return (
     <Stack direction="row" spacing={2}>
       <StyledBadge

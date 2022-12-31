@@ -27,7 +27,7 @@ const Topbar = () => {
   }, [dispatch, user])
 
   return (
-    <Box display="flex" justifyContent="space-between" p={1} style={{background: "#064BB5"}}>
+    <Box display="flex" justifyContent="space-between" p={1} style={{background: "#544ee6"}}>
       <Box display="flex">
 
         {broken && !rtl && (

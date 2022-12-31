@@ -1,6 +1,6 @@
-@import url('https://fonts.googleapis.com/css2?family=Oswald:wght@300;400;500&display=swap'); 
-                
-*{
+@import url('https://fonts.googleapis.com/css2?family=Oswald:wght@300;400;500&display=swap');
+
+* {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
@@ -10,28 +10,28 @@
   /* overflow-x: hidden; */
 }
 
-:root{
-/*----------color-pallets----------*/
-    --white:#fff;
-    --dark-blue: #24303c;
-    --dark-green: #0c211d;
-    --light-blue: #EBF3FF;
+:root {
+  /*----------color-pallets----------*/
+  --white: #fff;
+  --dark-blue: #24303c;
+  --dark-green: #0c211d;
+  --light-blue: #EBF3FF;
 
-    --dark: #0000;
-    --grey: #efefef;
-    --gold: #ccb99d;
-    --blue: #5c8df6;
-    --purple-gradient: #4e54c8;
-    /*------gradient-color-pallets---*/
-    --golden-gradient:linear-gradient(135deg, rgba(40, 118, 252, 0) 0%, rgb(205, 186, 157) 100%);
+  --dark: #0000;
+  --grey: #efefef;
+  --gold: #ccb99d;
+  --blue: #5c8df6;
+  --purple-gradient: #4e54c8;
+  /*------gradient-color-pallets---*/
+  --golden-gradient: linear-gradient(135deg, rgba(40, 118, 252, 0) 0%, rgb(205, 186, 157) 100%);
 
 
 
-    --font-family-apple: system-ui, -apple-system, BlinkMacSystemFont, '.SFNSText-Regular', sans-serif;
-    --font-family-code: ui-monospace, Menlo, Consolas, Monaco, monospace;
-    --font-family-default: Helvetica, Arial, sans-serif;
-    --font-family-segoe: Segoe UI Historic, Segoe UI, Helvetica, Arial, sans-serif;
- 
+  --font-family-apple: system-ui, -apple-system, BlinkMacSystemFont, '.SFNSText-Regular', sans-serif;
+  --font-family-code: ui-monospace, Menlo, Consolas, Monaco, monospace;
+  --font-family-default: Helvetica, Arial, sans-serif;
+  --font-family-segoe: Segoe UI Historic, Segoe UI, Helvetica, Arial, sans-serif;
+
 }
 
 
@@ -54,31 +54,23 @@
 }
 
 
-.html{
+.html {
   overflow-y: scroll;
 }
-body{
+
+body {
   width: 100vw;
   height: 100vh;
   overflow-x: hidden;
 }
-.App{
+
+.App {
   width: 100vw;
   height: auto;
   /* background-color: var(--light-blue); */
 }
 
 
-/* React-Laoding */
-#loading-transition{
-  background: rgba(169, 234, 250, 0.728);
-}
-#react-loading{
-  padding-top: 45vh;
-}
-.MuiTypography-root .MuiTypography-body1 .MuiCardHeader-subheader .css-1adgybj-MuiTypography-root{
-  background: red!important;
-}
-.MuiTypography-root .MuiTypography-body1 .MuiCardHeader-subheader{
-  background: red!important;
+#logo-hover {
+  background: none !important;
 }

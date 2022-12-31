@@ -59,7 +59,7 @@ const App = () => {
                 <Route path="resources/:id" element={<ResourcesDetail />} />
                 <Route path="profile" element={<Profile />} />
                 <Route path="support" element={<Support />} />
-                
+
               </Route>
               <Route path="*" element={<Loader />} />
             </Route>

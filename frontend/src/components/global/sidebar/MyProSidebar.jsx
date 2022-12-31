@@ -7,7 +7,7 @@ import { useSidebarContext } from "./sidebarContext";
 
 import { Link, useNavigate } from "react-router-dom";
 import { tokens } from "../../../theme";
-import { useTheme, Box, Typography, IconButton } from "@mui/material";
+import { useTheme, Box, Typography, IconButton, Card } from "@mui/material";
 import HomeOutlinedIcon from "@mui/icons-material/HomeOutlined";
 import PeopleOutlinedIcon from "@mui/icons-material/PeopleOutlined";
 import ContactsOutlinedIcon from "@mui/icons-material/ContactsOutlined";
@@ -19,12 +19,13 @@ import BarChartOutlinedIcon from "@mui/icons-material/BarChartOutlined";
 import PieChartOutlineOutlinedIcon from "@mui/icons-material/PieChartOutlineOutlined";
 
 import TimelineOutlinedIcon from "@mui/icons-material/TimelineOutlined";
-import CloseOutlinedIcon from "@mui/icons-material/CloseOutlined";
+import KeyboardDoubleArrowLeftIcon from '@mui/icons-material/KeyboardDoubleArrowLeft';
 import MenuOutlinedIcon from "@mui/icons-material/MenuOutlined";
 import MapOutlinedIcon from "@mui/icons-material/MapOutlined";
 import SwitchRightOutlinedIcon from "@mui/icons-material/SwitchRightOutlined";
 import SwitchLeftOutlinedIcon from "@mui/icons-material/SwitchLeftOutlined";
-
+import OverlayTrigger from 'react-bootstrap/OverlayTrigger';
+import Tooltip from 'react-bootstrap/Tooltip';
 import { useLocation } from "react-router-dom";
 
 
@@ -47,7 +48,7 @@ const Item = ({ title, to, icon, selected, setSelected }) => {
 
 const MyProSidebar = () => {
   const location = useLocation();
-  const { pathname} = location
+  const { pathname } = location
   const splitLocation = pathname.split("/")[1]
 
   const theme = useTheme();
@@ -57,38 +58,38 @@ const MyProSidebar = () => {
   const { collapseSidebar, toggleSidebar, collapsed, broken } = useProSidebar();
 
   return (
-    <Box
-      sx={{
-        position: "sticky",
-        display: "flex",
-        height: "100vh",
-        top: 0,
-        bottom: 0,
-        zIndex: 10000,
-        "& .sidebar": {
-          border: "none",
-        },
-        "& .menu-icon": {
-          backgroundColor: "transparent !important",
-        },
-        "& .menu-item": {
-          // padding: "5px 35px 5px 20px !important",
-          backgroundColor: "transparent !important",
-        },
-        "& .menu-anchor": {
-          color: "inherit !important",
-          backgroundColor: "transparent !important",
-        },
-        "& .menu-item:hover": {
-          color: `${colors.blueAccent[500]} !important`,
-          backgroundColor: "transparent !important",
-        },
-        "& .menu-item.active": {
-          color: `${colors.greenAccent[500]} !important`,
-          backgroundColor: "transparent !important",
-        },
-      }}
-    >
+    // <Box
+    //   // sx={{
+    //   //   position: "sticky",
+    //   //   display: "flex",
+    //   //   height: "100vh",
+    //   //   top: 0,
+    //   //   bottom: 0,
+    //   //   zIndex: 10000,
+    //   //   "& .sidebar": {
+    //   //     border: "none",
+    //   //   },
+    //   //   "& .menu-icon": {
+    //   //     backgroundColor: "transparent !important",
+    //   //   },
+    //   //   "& .menu-item": {
+    //   //     // padding: "5px 35px 5px 20px !important",
+    //   //     backgroundColor: "transparent !important",
+    //   //   },
+    //   //   "& .menu-anchor": {
+    //   //     color: "inherit !important",
+    //   //     backgroundColor: "transparent !important",
+    //   //   },
+    //   //   "& .menu-item:hover": {
+    //   //     color: `${colors.blueAccent[500]} !important`,
+    //   //     backgroundColor: "transparent !important",
+    //   //   },
+    //   //   "& .menu-item.active": {
+    //   //     color: `${colors.greenAccent[500]} !important`,
+    //   //     backgroundColor: "transparent !important",
+    //   //   },
+    //   // }}
+    // >
       <Sidebar
         breakPoint="md"
         rtl={sidebarRTL}
@@ -99,6 +100,7 @@ const MyProSidebar = () => {
         <Menu iconshape="square">
 
           <MenuItem
+            id="logo-hover"
             icon={
               collapsed && (
                 <MenuOutlinedIcon
@@ -116,16 +118,19 @@ const MyProSidebar = () => {
                 mt="18px"
               >
                 <Typography variant="h3" color={colors.grey[100]}>
-                  <img src="WKU-Logo.png" className="h-100" style={{ width: "200px", marginLeft: "-40px" }} />
+                  <h2 >WKU Dash</h2>
                 </Typography>
-                <IconButton
+
+                <Card
                   onClick={
                     broken ? () => toggleSidebar() : () => collapseSidebar()
                   }
+                  className="p-2"
                 >
-                  <CloseOutlinedIcon />
-                </IconButton>
+                  <KeyboardDoubleArrowLeftIcon />
+                </Card>
               </Box>
+
             )}
           </MenuItem>
 
@@ -135,58 +140,25 @@ const MyProSidebar = () => {
 
 
           <hr></hr>
-          {/* {!collapsed && (
-            <Box mb="25px">
-              <Box
-                display="flex"
-                justifyContent="center"
-                alignItems="center"
-                sx={{
-                  "& .avater-image": {
-                    backgroundColor: colors.primary[500],
-                  },
-                }}
-              >
-                <img
-                  className="avater-image"
-                  alt="profile user"
-                  width="100px"
-                  height="100px"
-                  src={"../../assets/user.png"}
-                  style={{ cursor: "pointer", borderRadius: "50%" }}
-                />
-              </Box>
-              <Box textAlign="center">
-                <Typography
-                  variant="h3"
-                  color={colors.grey[100]}
-                  fontWeight="bold"
-                  sx={{ m: "10px 0 0 0" }}
-                >
-                  Harun Jeylan
-                </Typography>
-              </Box>
-            </Box>
-          )} */}
 
           <Box paddingLeft={collapsed ? undefined : "10%"}>
+            
+              <Item
+                title="dashboard"
+                to="/dashboard"
+                icon={<HomeOutlinedIcon />}
+                selected={selected}
+                setSelected={setSelected}
+              />
 
-            <Item
-              title="dashboard"
-              to="/dashboard"
-              icon={<HomeOutlinedIcon />}
-              selected={selected}
-              setSelected={setSelected}
-            />
-
-            <SubMenu 
+            <SubMenu
               icon={<PeopleOutlinedIcon />} label="Charts"
               selected={selected}
               setSelected={setSelected}>
-              <MenuItem> Pie charts </MenuItem>
-              <MenuItem> Line charts </MenuItem>
+              <MenuItem style={{ backgroundColor: `${colors.primary[400]}` }}> Pie charts </MenuItem>
+              <MenuItem style={{ backgroundColor: `${colors.primary[400]}` }}> Line charts </MenuItem>
             </SubMenu>
-            {/* <Item
+            <Item
               title="Manage Team"
               to="/course"
               icon={<PeopleOutlinedIcon />}
@@ -194,7 +166,7 @@ const MyProSidebar = () => {
               setSelected={setSelected}
             >
 
-            </Item> */}
+            </Item>
 
             <Item
               title="calender"
@@ -287,7 +259,7 @@ const MyProSidebar = () => {
           </Box>
         </Menu>
       </Sidebar>
-    </Box>
+    // </Box>
   );
 };
 

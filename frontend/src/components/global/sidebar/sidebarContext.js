@@ -9,7 +9,6 @@ export const MyProSidebarProvider = ({ children }) => {
   const [sidebarBackgroundColor, setSidebarBackgroundColor] =
     useState(undefined);
   const [sidebarImage, setSidebarImage] = useState(undefined);
-  
   return (
     <ProSidebarProvider>
       <SidebarContext.Provider
