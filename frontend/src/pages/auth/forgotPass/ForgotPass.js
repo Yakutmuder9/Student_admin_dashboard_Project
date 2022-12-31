@@ -4,7 +4,6 @@ const ForgotPass = () => {
   return (
     <div>
       <div className="login">
-        {/* animated-background */}
         <div className="login-back-animated" >
           <ul className="circles">
             <li></li>
