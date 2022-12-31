@@ -22,10 +22,6 @@ import TimelineOutlinedIcon from "@mui/icons-material/TimelineOutlined";
 import KeyboardDoubleArrowLeftIcon from '@mui/icons-material/KeyboardDoubleArrowLeft';
 import MenuOutlinedIcon from "@mui/icons-material/MenuOutlined";
 import MapOutlinedIcon from "@mui/icons-material/MapOutlined";
-import SwitchRightOutlinedIcon from "@mui/icons-material/SwitchRightOutlined";
-import SwitchLeftOutlinedIcon from "@mui/icons-material/SwitchLeftOutlined";
-import OverlayTrigger from 'react-bootstrap/OverlayTrigger';
-import Tooltip from 'react-bootstrap/Tooltip';
 import { useLocation } from "react-router-dom";
 
 
