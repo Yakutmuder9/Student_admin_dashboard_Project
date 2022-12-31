@@ -1,11 +1,10 @@
-// docs https://github.com/azouaoui-med/react-pro-sidebar
 import { useState } from "react";
 import { Menu, Sidebar, MenuItem, SubMenu } from "react-pro-sidebar";
 import { useProSidebar } from "react-pro-sidebar";
 
 import { useSidebarContext } from "./sidebarContext";
 
-import { Link, useNavigate } from "react-router-dom";
+import { Link } from "react-router-dom";
 import { tokens } from "../../../theme";
 import { useTheme, Box, Typography, IconButton, Card } from "@mui/material";
 import HomeOutlinedIcon from "@mui/icons-material/HomeOutlined";
