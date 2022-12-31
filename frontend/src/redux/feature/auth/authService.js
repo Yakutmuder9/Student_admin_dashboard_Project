@@ -2,7 +2,6 @@ import axios from "axios";
 import { toast } from "react-toastify";
 
 const BACKEND_URL ='http://localhost:5000'
-// const BACKEND_URL ='https://wina-social-app.herokuapp.com'
 // const BACKEND_URL = process.env.REACT_APP_BACKEND_URL
 
 export const validateEmail = (email) => {
