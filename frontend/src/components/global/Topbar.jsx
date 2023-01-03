@@ -43,7 +43,7 @@ const Topbar = () => {
   }, [dispatch, user])
 
   return (
-    <Box display="flex" justifyContent="space-between" p={1} style={{ background: "#544ee6" }}>
+    <Box display="flex" justifyContent="space-between" p={1} style={{ background: "#2d45fb" }}>
       <Box display="flex">
 
         {broken && !rtl && (
@@ -90,6 +90,7 @@ const Topbar = () => {
         </IconButton>
 
         <CardHeader
+          title={<span>{user?.firstName.replace(/^./, str => str.toUpperCase())}</span>}
           // title={<span>{user?.firstName.replace(/^./, str => str.toUpperCase())}</span>}
           subheader={user?.role}
           className="p-0 px-2 m-0"

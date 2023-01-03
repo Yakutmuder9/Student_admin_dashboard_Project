@@ -1,33 +1,28 @@
 import {
     Box,
-    Button,
-    IconButton,
     Typography,
     useTheme,
     useMediaQuery,
-  } from "@mui/material";
-  import Grid from "@mui/material/Unstable_Grid2";
-  import { tokens } from "../../../theme";
-  import { mockTransactions } from "../../../data/mockData";
-  import DownloadOutlinedIcon from "@mui/icons-material/DownloadOutlined";
-  import Header from "../../../components/header/Header";
-  
-  // import LineChart from "../../components/LineChart";
-  // import GeographyChart from "../../components/GeographyChart";
-  // import BarChart from "../../components/BarChart";
-  // import StatBox from "../../components/StatBox";
-  // import ProgressCircle from "../../components/ProgressCircle";
+    Accordion,
+    AccordionSummary,
+    AccordionDetails,
+    Grid,
+    Paper
+} from "@mui/material";
+import {
+    ExpandMore, NotificationsNone
+    , MarkChatUnread
+} from "@mui/icons-material";
+import { tokens } from "../../../theme";
+import { styled } from '@mui/material/styles';
 
-  import { styled } from '@mui/material/styles';
-  import Paper from '@mui/material/Paper';
-  
-  const Item = styled(Paper)(({ theme }) => ({
+const Item = styled(Paper)(({ theme }) => ({
     backgroundColor: theme.palette.mode === 'dark' ? '#1A2027' : '#fff',
     ...theme.typography.body2,
     textAlign: 'center',
     color: theme.palette.text.secondary,
-  }));
-  
+}));
+
 
 const Dashactive = () => {
     const theme = useTheme();
@@ -35,8 +30,201 @@ const Dashactive = () => {
     const colors = tokens(theme.palette.mode);
 
     return (
-        <Box m="20px">
-            <Box
+        <Box className="analytics-activity-dashboard bg-dark d-flex align-items-center justify-content-between">
+            <Box m="20px">
+            
+            <div className="analytics-title d-flex align-items-center justify-content-between">
+                <div className="bg-warning w-100"> 
+                    <Grid container spacing={2}>
+                        <Grid item xs={6} md={8}>
+                            <Item>xs=6 md=8</Item>
+                            <Item>xs=6 md=8</Item>
+                            <Item>xs=6 md=8</Item>
+                        </Grid>
+                        <Grid item xs={6} md={4}>
+                            <Item>xs=6 md=4</Item>
+                        </Grid>
+                        <Grid item xs={6} md={4}>
+                            <Item>xs=6 md=4</Item>
+                        </Grid>
+                        <Grid item xs={6} md={8}>
+                            <Item>xs=6 md=8</Item>
+                        </Grid>
+                    </Grid>
+                </div>
+
+
+                <div className="bg-secondary w-100">
+                    <Grid container spacing={2}>
+                    <Grid item xs={6} md={8}>
+                        <Item>xs=6 md=8</Item>
+                    </Grid>
+                    <Grid item xs={6} md={4}>
+                        <Item>xs=6 md=4</Item>
+                    </Grid>
+                    <Grid item xs={6} md={4}>
+                        <Item>xs=6 md=4</Item>
+                    </Grid>
+                    <Grid item xs={6} md={8}>
+                        <Item>xs=6 md=8</Item>
+                    </Grid>
+                </Grid>
+                </div>
+                
+            </div>
+
+
+            <div className="rounded ">
+                <div className="analytics-title d-flex align-items-center justify-content-between">
+                    <div className="anatlytics-txt">
+                        <h2>Analytics Dashboard</h2>
+                        <span>January 1, Sunday</span>
+                    </div>
+                    <div className="anatlytics-icons  d-flex align-items-center justify-content-between">
+                        <NotificationsNone />
+                        <MarkChatUnread />
+                    </div>
+                </div>
+
+                <div className="engagement-cards d-flex align-items-center justify-content-between">
+                    <div className="">
+                        <div className="engamen-card-icon"></div>
+                        <div className="engamen-card-text">
+                            <p>overall Engagment</p>
+                            <h5>12h/Weekly</h5>
+                        </div>
+                    </div>
+                    <div className="card">
+                        <div className="engamen-card-icon"></div>
+                        <div className="engamen-card-text">
+                            <p>overall Engagment</p>
+                            <h5>12h/Weekly</h5>
+                        </div>
+                    </div>
+                    <div className="card">
+                        <div className="engamen-card-icon"></div>
+                        <div className="engamen-card-text">
+                            <p>overall Engagment</p>
+                            <h5>12h/Weekly</h5>
+                        </div>
+                    </div>
+                </div>
+
+                <div className="activity-performace-conatainer d-flex align-items-center justify-content-between">
+                    <div className="active-hour-performance">
+                        <div className=" active-hours">
+                            <div className="card-title">
+                                <h5>Activity Hours</h5>
+                                <select name="listing" id="listing" class="drop-down-menu input">
+                                    <option value="daily">Daily</option>
+                                    <option value="weekly">Weekly</option>
+                                    <option value="monthly">Monthly</option>
+                                </select>
+                            </div>
+                        </div>
+
+                        <div className=" active-hours-graph-container ">
+                            <div className="active-graph">
+                                graph gooese here..
+                            </div>
+                            <div className="lisit-active-hours">
+                                <div className="time-spent-card">
+                                    <p>Time Spent</p>
+                                    <h6>15 <span>73%</span></h6>
+                                </div>
+                                <div className="time-spent-card">
+                                    <p>Lesson Taken</p>
+                                    <h6>23 <span>83%</span></h6>
+                                </div>
+                                <div className="exam-passed-card">
+                                    <p>Exam Passed</p>
+                                    <h6>12 <span>90%</span></h6>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div className=" performance-card-container">
+                        <div className="performance-graph">
+                            
+                        </div>
+                        <div className="performance-txt d-flex">
+                            <h6>40% </h6><span>Your Productivity is 40% <br></br> higher compared to last month</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div className="enrolled-Overall-conatainer d-flex align-items-center justify-content-between">
+                    <div className="enrolled-classes-accordian">
+                        <Accordion>
+                            <AccordionSummary
+                                expandIcon={<ExpandMore />}
+                                aria-controls="panel1a-content"
+                                id="panel1a-header"
+                            >
+                                <Typography>Accordion 1</Typography>
+                            </AccordionSummary>
+                            <AccordionDetails>
+                                <Typography>
+                                    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse
+                                    malesuada lacus ex, sit amet blandit leo lobortis eget.
+                                </Typography>
+                            </AccordionDetails>
+                        </Accordion>
+                        <Accordion>
+                            <AccordionSummary
+                                expandIcon={<ExpandMore />}
+                                aria-controls="panel2a-content"
+                                id="panel2a-header"
+                            >
+                                <Typography>Accordion 2</Typography>
+                            </AccordionSummary>
+                            <AccordionDetails>
+                                <Typography>
+                                    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse
+                                    malesuada lacus ex, sit amet blandit leo lobortis eget.
+                                </Typography>
+                            </AccordionDetails>
+                        </Accordion>
+
+                    </div>
+
+                    <div className="card overall-activity-container">
+                        <div className="performance-graph"></div>
+                        <div className="performance-txt d-flex">
+                            <h6>40% </h6><span>Your Productivity is 40% <br></br> higher compared to last month</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div className="right-side-event">
+                <input placeholder="search" />
+                <span>Upcommig Events</span>
+                <div className="card"></div>
+                <span>Assignments</span>
+                <div className="card"></div>
+            </div>
+
+
+            </Box>
+        </Box>
+    )
+}
+
+export default Dashactive
+
+
+
+
+
+const Dashactivex = () => {
+    const theme = useTheme();
+    const smScreen = useMediaQuery(theme.breakpoints.up("sm"));
+    const colors = tokens(theme.palette.mode);
+    return (
+        <div>
+            {/* <CourseCarosel /> */}
+            {/* <Box
                 display={smScreen ? "flex" : "block"}
                 flexDirection={smScreen ? "row" : "column"}
                 justifyContent={smScreen ? "space-between" : "start"}
@@ -59,10 +247,10 @@ const Dashactive = () => {
                         Download Reports
                     </Button>
                 </Box>
-            </Box>
+            </Box> */}
 
             {/* GRID & CHARTS */}
-            <Grid container rowSpacing={1} columnSpacing={{ xs: 1, sm: 2, md: 3 }}>
+            {/* <Grid container rowSpacing={1} columnSpacing={{ xs: 1, sm: 2, md: 3 }}>
                 <Grid xs={12} sm={12} md={6} lg={3} xl={3}>
                     <Box
                         width="100%"
@@ -71,17 +259,6 @@ const Dashactive = () => {
                         alignItems="center"
                         justifyContent="center"
                     >
-                        {/* <StatBox
-              title="12,361"
-              subtitle="Emails Sent"
-              progress="0.75"
-              increase="+14%"
-              icon={
-                <EmailIcon
-                  sx={{ color: colors.greenAccent[600], fontSize: "26px" }}
-                />
-              } 
-            />*/}
                     </Box>
                 </Grid>
                 <Grid xs={12} sm={12} md={6} lg={3} xl={3}>
@@ -92,17 +269,6 @@ const Dashactive = () => {
                         alignItems="center"
                         justifyContent="center"
                     >
-                        {/* <StatBox
-              title="431,225"
-              subtitle="Sales Obtained"
-              progress="0.50"
-              increase="+21%"
-              icon={
-                <PointOfSaleIcon
-                  sx={{ color: colors.greenAccent[600], fontSize: "26px" }}
-                />
-              } 
-            />*/}
                     </Box>
                 </Grid>
                 <Grid xs={12} sm={12} md={6} lg={3} xl={3}>
@@ -113,17 +279,6 @@ const Dashactive = () => {
                         alignItems="center"
                         justifyContent="center"
                     >
-                        {/* <StatBox
-              title="32,441"
-              subtitle="New Clients"
-              progress="0.30"
-              increase="+5%"
-              icon={
-                <PersonAddIcon
-                  sx={{ color: colors.greenAccent[600], fontSize: "26px" }}
-                />
-              } 
-            />*/}
                     </Box>
                 </Grid>
                 <Grid xs={12} sm={12} md={6} lg={3} xl={3}>
@@ -134,17 +289,6 @@ const Dashactive = () => {
                         alignItems="center"
                         justifyContent="center"
                     >
-                        {/* <StatBox
-              title="1,325,134"
-              subtitle="Traffic Received"
-              progress="0.80"
-              increase="+43%"
-              icon={
-                <TrafficIcon
-                  sx={{ color: colors.greenAccent[600], fontSize: "26px" }}
-                />
-              }
-            /> */}
                     </Box>
                 </Grid>
 
@@ -194,7 +338,6 @@ const Dashactive = () => {
                                     </Box>
                                 </Box>
                                 <Box height="250px" m="-20px 0 0 0">
-                                    {/* <LineChart isDashboard={true} /> */}
                                 </Box>
                             </Box>
                         </Item>
@@ -210,7 +353,6 @@ const Dashactive = () => {
                                 alignItems="center"
                                 mt="25px"
                             >
-                                {/* <ProgressCircle size="125" /> */}
                                 <Typography
                                     variant="h5"
                                     color={colors.greenAccent[500]}
@@ -234,7 +376,6 @@ const Dashactive = () => {
                                 Sales Quantity
                             </Typography>
                             <Box height="250px" mt="-20px">
-                                {/* <BarChart isDashboard={true} /> */}
                             </Box>
                         </Box></Item>
                     </Grid>
@@ -248,7 +389,6 @@ const Dashactive = () => {
                                 Geography Based Traffic
                             </Typography>
                             <Box height="200px">
-                                {/* <GeographyChart isDashboard={true} /> */}
                             </Box>
                         </Box></Item>
                     </Grid>
@@ -311,9 +451,8 @@ const Dashactive = () => {
                         })}
                     </Box></Item>
                 </Grid>
-            </Grid>
-        </Box>
+            </Grid> */}
+        </div>
     )
 }
 
-export default Dashactive
