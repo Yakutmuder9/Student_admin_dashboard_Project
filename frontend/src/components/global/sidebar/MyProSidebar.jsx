@@ -62,9 +62,9 @@ const MyProSidebar = () => {
       
      await logoutUser();
     //  console.log(logoutstate);
-      localStorage.removeItem('user')
+      // localStorage.removeItem('user')
       localStorage.clear();
-      navigate("/");
+      navigate("/login");
     } catch (error) {
       console.log("error.message");
     }

@@ -1,6 +1,6 @@
 import { useContext, useState } from "react";
 import { ColorModeContext, tokens, useMode } from "../../theme";
-import { useTheme, Box, IconButton, InputBase } from "@mui/material";
+import { useTheme, Box, IconButton, InputBase, useMediaQuery } from "@mui/material";
 import LightModeOutlinedIcon from "@mui/icons-material/LightModeOutlined";
 import DarkModeOutlinedIcon from "@mui/icons-material/DarkModeOutlined";
 import NotificationsOutlinedIcon from "@mui/icons-material/NotificationsOutlined";
@@ -18,6 +18,7 @@ const Topbar = () => {
   const theme = useTheme();
   const colors = tokens(theme.palette.mode);
   const colorMode = useContext(ColorModeContext);
+  const smScreen = useMediaQuery(theme.breakpoints.up("sm"));
   const { toggleSidebar, broken, rtl } = useProSidebar();
   const dispatch = useDispatch()
   const user = useSelector((state) => state.auth?.user);
@@ -56,7 +57,7 @@ const Topbar = () => {
         )}
 
         <Box
-          display="flex"
+          display={smScreen? "flex" : "none"}
           backgroundColor={colors.primary[400]}
           p={0.2}
           borderRadius={1}

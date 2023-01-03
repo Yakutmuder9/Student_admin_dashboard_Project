@@ -2,15 +2,17 @@ import { MyProSidebarProvider } from "../../components/global/sidebar/sidebarCon
 import Topbar from "../../components/global/Topbar";
 import { Outlet } from "react-router";
 import Footer from "../../components/footer/Footer";
+import { useMediaQuery, useTheme } from "@mui/material";
 
 const Dashboard = () => {
-  
-  
+  const theme = useTheme();
+  const mdScreen = useMediaQuery(theme.breakpoints.up("md"));
+
   return (
     <MyProSidebarProvider>
       <div style={{ height: "100%", width: "100%" }}>
         <main className="oveflow-hidden">
-          <Topbar />
+          {!mdScreen ?  <Topbar /> : null}
           <Outlet />
           <Footer />
         </main>
