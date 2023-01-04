@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
-import "./dashactive.css";
-// import ReactApexCharts from "react-apexcharts";
+// import "./dashactive.css";
+import ReactApexCharts from "react-apexcharts";
 import Box from "@mui/material/Box";
 import Fab from "@mui/material/Fab";
 import ChevronRightIcon from "@mui/icons-material/ChevronRight";
@@ -9,6 +9,7 @@ import { styled } from "@mui/material/styles";
 import CardContent from "@mui/material/CardContent";
 import Paper from "@mui/material/Paper";
 import ItemsCarousel from "react-items-carousel";
+import ApexCharts from 'apexcharts'
 
 const Item = styled(Paper)(({ theme }) => ({
   backgroundColor: theme.palette.mode === "dark" ? "#1A2027" : "#fff",
@@ -23,9 +24,9 @@ export const CourseCarosel = () => {
   const [courseEnrolled, setCourseEnrolled] = useState([{}, {}, {}, {}, {}, {}, {},]);
   const [cardNum, setCardNum] = useState(4);
   const chevronWidth = 40;
-  
 
-  
+
+
   const getFetchUsers = () => {
     fetch("http://localhost:5000/courseEnrolled")
       .then((response) => {
@@ -40,7 +41,7 @@ export const CourseCarosel = () => {
       .catch((error) => {
         console.log(error);
       });
-     };
+  };
 
   useEffect(() => {
     getFetchUsers();
@@ -379,63 +380,105 @@ export const CourseCarosel = () => {
 };
 
 export const SpinnChart = () => {
-  const [spine, setSpine] = useState({
-    series: [
-      {
-        name: "Weekly",
-        data: [31, 40, 28, 51, 42, 109, 100],
-      },
-      {
-        name: "Over all project",
-        data: [11, 32, 45, 32, 34, 52, 41],
-      },
-    ],
-    options: {
-      chart: {
-        height: 350,
-        type: "area",
-      },
-      dataLabels: {
-        enabled: false,
-      },
-      stroke: {
-        curve: "smooth",
-      },
-      xaxis: {
-        type: "datetime",
-        categories: [
-          "2022-09-19T00:00:00.000Z",
-          "2022-09-19T01:30:00.000Z",
-          "2022-09-19T02:30:00.000Z",
-          "2022-09-19T03:30:00.000Z",
-          "2022-09-19T04:30:00.000Z",
-          "2022-09-19T05:30:00.000Z",
-          "2022-09-19T06:30:00.000Z",
-        ],
-      },
-      tooltip: {
-        x: {
-          format: "dd/MM/yy HH:mm",
-        },
+  var options = {
+    series: [{
+      name: 'series1',
+      data: [31, 40, 28, 51, 42, 109, 100]
+    }, {
+      name: 'series2',
+      data: [11, 32, 45, 32, 34, 52, 41]
+    }],
+    chart: {
+      height: 150,
+      type: 'area'
+    },
+    dataLabels: {
+      enabled: false
+    },
+    stroke: {
+      curve: 'smooth'
+    },
+    xaxis: {
+      type: 'datetime',
+      categories: ["2018-09-19T00:00:00.000Z", "2018-09-19T01:30:00.000Z", "2018-09-19T02:30:00.000Z", "2018-09-19T03:30:00.000Z", "2018-09-19T04:30:00.000Z", "2018-09-19T05:30:00.000Z", "2018-09-19T06:30:00.000Z"]
+    },
+    tooltip: {
+      x: {
+        format: 'dd/MM/yy HH:mm'
       },
     },
-  });
+  };
+
+  var chart = new ApexCharts(document.querySelector("#apx-spining-chart"), options);
+  chart.render();
+
 
   return (
     <div className="chartLeft  p-1 rounded text-white my-2" id="">
       <h5 className="ps-2 overflow-hidden text-dark">Live Learning Activity</h5>
-      {/* <div id=" overflow-hidden">
-        <Chart
-          options={spine.options}
-          series={spine.series}
-          type="area"
-          id="spinningChart"
-          className=" text-white"
-        />
-      </div> */}
+      <div className="overflow-hidden w-100" id="apx-spining-chart">
+      </div>
     </div>
   );
 };
+// export const SpinnChart = () => {
+//   const [spine, setSpine] = useState({
+//     series: [
+//       {
+//         name: "Weekly",
+//         data: [31, 40, 28, 51, 42, 109, 100],
+//       },
+//       {
+//         name: "Over all project",
+//         data: [11, 32, 45, 32, 34, 52, 41],
+//       },
+//     ],
+//     options: {
+//       chart: {
+//         height: 350,
+//         type: "area",
+//       },
+//       dataLabels: {
+//         enabled: false,
+//       },
+//       stroke: {
+//         curve: "smooth",
+//       },
+//       xaxis: {
+//         type: "datetime",
+//         categories: [
+//           "2022-09-19T00:00:00.000Z",
+//           "2022-09-19T01:30:00.000Z",
+//           "2022-09-19T02:30:00.000Z",
+//           "2022-09-19T03:30:00.000Z",
+//           "2022-09-19T04:30:00.000Z",
+//           "2022-09-19T05:30:00.000Z",
+//           "2022-09-19T06:30:00.000Z",
+//         ],
+//       },
+//       tooltip: {
+//         x: {
+//           format: "dd/MM/yy HH:mm",
+//         },
+//       },
+//     },
+//   });
+
+//   return (
+//     <div className="chartLeft  p-1 rounded text-white my-2" id="">
+//       <h5 className="ps-2 overflow-hidden text-dark">Live Learning Activity</h5>
+//       <div id=" overflow-hidden">
+//         <Chart
+//           options={spine.options}
+//           series={spine.series}
+//           type="area"
+//           id="spinningChart"
+//           className=" text-white"
+//         />
+//       </div>
+//     </div>
+//   );
+// };
 
 
 export const CourseProgressTabel = () => {
@@ -772,17 +815,13 @@ export const MixedBargraph = () => {
   return (
     <div className="d-block w-100 h-100 mixedChart">
       <div id="chart" className="p-2">
-        {/* <ReactApexCharts
+        <ReactApexCharts
           options={spine.options}
           series={spine.series}
           type="line"
-          height={350}
-        /> */}
-      </div>
-      <div className="">
-        <h5 className="">
-          tit
-        </h5>
+          height="auto"
+          width="80%"
+        />
       </div>
     </div>
   );
@@ -822,7 +861,7 @@ const Promotion = () => {
 
 const Notify = () => {
   return (<>
-  <h3 className="w-100 bg-light p-2"> Assignment due today</h3>
+    <h3 className="w-100 bg-light p-2"> Assignment due today</h3>
     <ol class="list-group list-group-numbered">
       <li class="list-group-item d-flex justify-content-between align-items-start">
         <div class="ms-2 me-auto">

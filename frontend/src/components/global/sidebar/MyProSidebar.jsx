@@ -6,7 +6,7 @@ import { useSidebarContext } from "./sidebarContext";
 
 import { Link, useNavigate } from "react-router-dom";
 import { tokens } from "../../../theme";
-import { useTheme, Box, Typography, Card } from "@mui/material";
+import { useTheme, Box, Typography, Card, Button } from "@mui/material";
 import PeopleOutlinedIcon from "@mui/icons-material/PeopleOutlined";
 import ContactsOutlinedIcon from "@mui/icons-material/ContactsOutlined";
 import ReceiptOutlinedIcon from "@mui/icons-material/ReceiptOutlined";
@@ -59,9 +59,9 @@ const MyProSidebar = () => {
   const handleLogout = async (e) => {
     e.preventDefault();
     try {
-      
-     await logoutUser();
-    //  console.log(logoutstate);
+
+      await logoutUser();
+      //  console.log(logoutstate);
       // localStorage.removeItem('user')
       localStorage.clear();
       navigate("/login");
@@ -109,6 +109,10 @@ const MyProSidebar = () => {
         backgroundColor={colors.primary[400]}
         // backgroundColor="#1f252f"
         image={sidebarImage}
+        sx={{
+          width: "100%",
+          overflow: "hidden",
+        }}
       >
         <Menu iconshape="square">
 
@@ -131,7 +135,7 @@ const MyProSidebar = () => {
                 mt="18px"
               >
                 <Typography variant="h3" color={colors.grey[100]}>
-                  <span style={{ background: "#2d45fb", color:"#fff", padding:"5px", borderRadius:"12%" }}>WKU</span><span> Dashboard</span>
+                  <span style={{ background: "#2d45fb", color: "#fff", padding: "5px", borderRadius: "12%" }}>WKU</span><span> Dashboard</span>
                 </Typography>
 
                 <Card
@@ -158,7 +162,7 @@ const MyProSidebar = () => {
 
             <Item
               title="Dashboard"
-              to="/dashboard"
+              to="/"
               icon={<MdDashboard />}
               selected={selected}
               setSelected={setSelected}
@@ -189,7 +193,7 @@ const MyProSidebar = () => {
                 icon={<ContactsOutlinedIcon />}
                 selected={selected}
                 setSelected={setSelected}
-              />  }
+              />}
 
             <Item
               title={user?.role == 'superadmin' ? "Enrollment & record" : (user?.role == 'instructor' ? 'Attendance and grading' : 'Grades & Progress')}
@@ -343,14 +347,14 @@ const MyProSidebar = () => {
                 icon={<PieChartOutlineOutlinedIcon />}
                 selected={selected}
                 setSelected={setSelected}
-              /> 
+              />
               <Item
                 title="Support"
                 to="#"
                 icon={<PieChartOutlineOutlinedIcon />}
                 selected={selected}
                 setSelected={setSelected}
-              /></> 
+              /></>
             }
 
 
@@ -361,16 +365,21 @@ const MyProSidebar = () => {
               selected={selected}
               setSelected={setSelected}
             />
-            
-            <button 
-              onClick={handleLogout} className=""> 
-            
-            <Item
-              title="Log out"
-              icon={<MdLogout />}
-              selected={selected}
-              setSelected={setSelected}
-            /></button>
+
+            <Box>
+              <Item
+                title="Log out"
+                icon={<MdLogout />}
+                selected={selected}
+                setSelected={setSelected}
+                className='position-relative'
+              >
+              </Item>
+              <Button
+                onClick={handleLogout} className="btn w-100  bg-danger position-absolute" sx={{zIndex: 99}}>dsdsd
+              </Button>
+            </Box>
+
           </Box>
         </Menu>
       </Sidebar>

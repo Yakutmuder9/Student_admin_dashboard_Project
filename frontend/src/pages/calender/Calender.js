@@ -1,9 +1,9 @@
-import React from 'react'
+import CalendarWithEvent from "." 
 
 const Calender = () => {
   return (
     <div>
-      Calender
+      <CalendarWithEvent />
     </div>
   )
 }

@@ -39,7 +39,7 @@ import CardHeader from '@mui/material/CardHeader';
 import axios from 'axios';
 import Topbar from "../../../components/global/Topbar";
 import { MdLogout } from "react-icons/md";
-
+import { MixedBargraph, SpinnChart } from "./SpinnChart";
 
 const Item = styled(Paper)(({ theme }) => ({
     backgroundColor: theme.palette.mode === 'dark' ? '#1A2027' : '#fff',
@@ -71,7 +71,6 @@ const Dashactive = () => {
             body: JSON.stringify({ featured: false })
         })
     }
-
 
 
 
@@ -133,38 +132,39 @@ const Dashactive = () => {
                     </Grid>
 
                     <Grid container display="flex" justifyContent="space-between" spacing={2}>
-                        <Grid item xs={6} sm={4}><Card>
-                            <CardHeader
-                                avatar={
-                                    <Avatar sx={{ backgroundColor: colors.blueAccent[100] }}>
-                                        <Analytics />
-                                    </Avatar>
-                                }
-                                title="Overall Engagment"
-                                subheader="16h / Weekly"
-                            />
-                        </Card></Grid>
+                        <Grid item xs={6} sm={4}>
+                            <Card sx={{ height: "70px" }}>
+                                <CardHeader
+                                    avatar={
+                                        <Avatar sx={{ backgroundColor: colors.blueAccent[100] }}>
+                                            <Analytics />
+                                        </Avatar>
+                                    }
+                                    title="Overall Engagment"
+                                    subheader="16h / Weekly"
+                                />
+                            </Card></Grid>
 
                         <Grid item xs={6} sm={4}>
-                            <Card className="bg-waring"  height="150px">
-                            <CardHeader
-                                avatar={
-                                    <Avatar sx={{ backgroundColor: colors.blueAccent[100] }}>
-                                        <Stars />
-                                    </Avatar>
-                                }
-                                title="Point Score"
-                                subheader="568"  
-                            />
-                        </Card>
+                            <Card sx={{ height: "70px" }}>
+                                <CardHeader
+                                    avatar={
+                                        <Avatar sx={{ backgroundColor: colors.blueAccent[100] }}>
+                                            <Stars />
+                                        </Avatar>
+                                    }
+                                    title="Point Score"
+                                    subheader="568"
+                                />
+                            </Card>
                         </Grid>
 
                         <Grid item xs={6} sm={4}>
-                            <Card>
+                            <Card sx={{ height: "70px" }}>
                                 <CardHeader
                                     avatar={
 
-                                        <Avatar sx={{ backgroundColor: colors.blueAccent[100] }}>
+                                        <Avatar sx={{ backgroundColor: colors.blueAccent[100], fontSize: "60px" }}>
                                             <Groups />
                                         </Avatar>
                                     }
@@ -173,178 +173,151 @@ const Dashactive = () => {
                                 />
                             </Card>
                         </Grid>
-                </Grid>
-
-                <Grid container display={smScreen ? "flex" : "block"} spacing={1} mt={2}  >
-                    <Grid item xs={12} sm={7}>
-                        <Card sx={{ height: '320px' }}>
-                            <CardHeader
-                                avatar={
-                                    <Avatar>
-                                        R
-                                    </Avatar>
-                                }
-                                title="Shrimp and Chorizo Paella"
-                                subheader="September 14, 2016"
-                            />
-                        </Card>
                     </Grid>
-                    <Grid item xs={12} sm={5}>
-                        <Card sx={{ height: '320px' }}>
-                            <CardHeader
-                                avatar={
-                                    <Avatar>
-                                        R
-                                    </Avatar>
-                                }
-                                title="Shrimp and Chorizo Paella"
-                                subheader="September 14, 2016"
-                            />
-                        </Card>
-                    </Grid>
-                </Grid>
+                {/* ---- Active hours */}
+                    <Grid container display={smScreen ? "flex" : "block"} spacing={1} mt={1}  >
+                        <Grid item xs={12} sm={7} >
 
+                            <Box >
+                                <Card className="p-3" sx={{ height: '320px' }}>
+                                    Active Hours
+                                    <MixedBargraph />
+                                </Card>
+                                <Box>
+                                </Box>
+                            </Box>
+                        </Grid>
+                        <Grid item xs={12} sm={5}>
+                            <Box >
+                                <Card className="p-3" sx={{ height: '320px' }}>
+                                    Performance
+                                </Card>
 
-                <Grid container display={smScreen ? "flex" : "block"} spacing={1} mt={2}>
-
-                    <Grid item xs={12} sm={7} >
-                        <Card sx={{ height: '330px' }}>
-                            <CardHeader
-                                avatar={
-                                    <Avatar>
-                                        R
-                                    </Avatar>
-                                }
-                                title="Shrimp and Chorizo Paella"
-                                subheader="September 14, 2016"
-                            />
-                        </Card>
+                            </Box>
+                        </Grid>
                     </Grid>
 
-                    <Grid item xs={12} sm={5}>
-                        <Card sx={{ height: '240px' }}>
-                            <CardHeader
-                                avatar={
-                                    <Avatar>
-                                        R
-                                    </Avatar>
-                                }
-                                title="Shrimp and Chorizo Paella"
-                                subheader="September 14, 2016"
-                            />
-                        </Card>
+                {/*------- Enrolled Class */}
+                    <Grid container display={smScreen ? "flex" : "block"} spacing={1} mt={1}>
 
-                        <Card className="mt-2" sx={{ height: '82px' }}>
-                            <CardHeader
-                                avatar={
-                                    <Avatar>
-                                        R
-                                    </Avatar>
-                                }
-                                title="Shrimp and Chorizo Paella"
-                                subheader="September 14, 2016"
-                            />
-                        </Card>
+                        <Grid item xs={12} sm={7} >
+                            <Box >
+                                <Card className="p-3" sx={{ height: '330px' }}>
+                                    Enrolled Class
+                                </Card>
+
+                            </Box>
+                        </Grid>
+
+                        <Grid item xs={12} sm={5}>
+                            <Box >
+                                <Card className="p-3" sx={{ height: '240px' }}>
+                                    <SpinnChart />
+                                </Card>
+
+                            </Box>
+
+
+                            <Box >
+                                <Card className="mt-2 p-3" sx={{ height: '82px' }}>
+                                    Enrolled Class
+                                </Card>
+
+                            </Box>
+                        </Grid>
                     </Grid>
+
+
                 </Grid>
 
 
-            </Grid>
+                <Grid p={2} item xs={12} md={4}
+                    sx={{
+                        // backgroundColor: colors.blueAccent[100],
+                        // backgroundColor: "#99DAFF",
+                        color: colors.grey[500],
+                        fontSize: "14px",
+                        backdropFilter: "blur(8px)",
+                        fontWeight: "bold",
+                        padding: "10px 20px",
+                    }}
+                >
 
 
-            <Grid p={2} item xs={12} md={4}
-                sx={{
-                    // backgroundColor: colors.blueAccent[100],
-                    backgroundColor: "#b1d6f18a",
-                    color: colors.grey[500],
-                    fontSize: "14px",
-                    backdropFilter: "blur(8px)",
-                    fontWeight: "bold",
-                    padding: "10px 20px",
-                }}
-            >
+                    {/* Analytics searsh and logout button conatiner */}
 
-
-                {/* Analytics searsh and logout buttun conatiner */}
-
-                <Grid mb={3} mt={2} xs={12}
-                    display="flex" justifyContent="space-between">
-                    <Box
-                        display="flex"
-                        backgroundColor={colors.primary[400]}
-                        p={0.2}
-                        borderRadius={1}
-                    >
-                        <InputBase sx={{ ml: 1, flex: 1 }} placeholder="Search" />
-                        <IconButton type="button">
-                            <SearchIcon />
-                        </IconButton>
-                    </Box>
-                    <Box>
-                        <Button
-                            sx={{
-                                backgroundColor: colors.blueAccent[700],
-                                color: colors.grey[100],
-                                fontSize: "14px",
-                                fontWeight: "bold",
-                                padding: "10px 20px",
-                            }}
+                    <Grid mb={3} mt={2} xs={12}
+                        display={smScreen ? "flex" : "none"} justifyContent="space-between">
+                        <Box
+                            display="flex"
+                            backgroundColor={colors.primary[400]}
+                            p={0.2}
+                            borderRadius={1}
                         >
-                            <MdLogout sx={{ mr: "10px", me: 2 }} />
-                            Log Out
-                        </Button>
-                    </Box>
+                            <InputBase sx={{ ml: 1, flex: 1 }} placeholder="Search" />
+                            <IconButton type="button">
+                                <SearchIcon />
+                            </IconButton>
+                        </Box>
+                        <Box>
+                            <Button
+                                sx={{
+                                    backgroundColor: colors.blueAccent[700],
+                                    color: colors.grey[100],
+                                    fontSize: "14px",
+                                    fontWeight: "bold",
+                                    padding: "10px 20px",
+                                }}
+                            >
+                                <MdLogout sx={{ mr: "10px", me: 2 }} />
+                                Log Out
+                            </Button>
+                        </Box>
+                    </Grid>
+
+
+                    {/* Analytics right side container  */}
+                    <Grid container display={mdScreen ? "block" : "flex"} spacing={2}>
+                        <Grid item xs={6} md={12}>
+                            <Box className="mt-2">
+                                <Box>
+                                    Upcommig Events
+                                </Box>
+                                <Card className="mt-2 p-2" sx={{ height: '220px' }}>
+                                    Upcommig Events
+                                </Card>
+
+                            </Box>
+                        </Grid>
+
+                        <Grid item xs={6} md={12}>
+                            <Box className="" sx={{ height: '240px' }}>
+                                <Box>
+                                    Assignments
+                                </Box>
+                                <Card className="mt-2 p-2" sx={{ height: '220px' }}>
+                                    Upcommig Assignments
+                                </Card>
+
+                            </Box>
+                        </Grid>
+
+                        <Grid item xs={6} md={12}>
+                            <Box sx={{color: colors.grey[500]}}>
+                                Notification
+                                <Box>
+                            </Box>
+                                <Card className="mt-2 p-3" sx={{ height: '190px' }}>
+                                    Notification
+                                </Card>
+
+                            </Box>
+                        </Grid>
+                    </Grid>
+
+
                 </Grid>
-
-
-                {/* Analytics right side container  */}
-                <Grid container display={mdScreen ? "block" : "flex"} spacing={2}>
-                    <Grid item xs={6} md={12}>
-                        <Card className="mt-2" sx={{ height: '240px' }}>
-                            <CardHeader
-                                avatar={
-                                    <Avatar>
-                                        R
-                                    </Avatar>
-                                }
-                                title="Shrimp and Chorizo Paella"
-                                subheader="September 14, 2016"
-                            />
-                        </Card>
-                    </Grid>
-
-                    <Grid item xs={6} md={12}>
-                        <Card className="mt-2" sx={{ height: '240px' }}>
-                            <CardHeader
-                                avatar={
-                                    <Avatar>
-                                        Rs
-                                    </Avatar>
-                                }
-                                title="Shrimp and Chorizo Paella"
-                                subheader="September 14, 2016"
-                            />
-                        </Card>
-                    </Grid>
-
-                    <Grid item xs={6} md={12}>
-                        <Card className="mt-2" sx={{ height: '250px' }}>
-                            <CardHeader
-                                avatar={
-                                    <Avatar>
-                                        Rs
-                                    </Avatar>
-                                }
-                                title="Shrimp and Chorizo Paella"
-                                subheader="September 14, 2016"
-                            />
-                        </Card>
-                    </Grid>
-                </Grid>
-
-
             </Grid>
-        </Grid>
         </div >
 
     )
