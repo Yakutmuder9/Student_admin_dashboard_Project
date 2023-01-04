@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-// import "./dashactive.css";
+import "./dashactive.css";
 import ReactApexCharts from "react-apexcharts";
 import Box from "@mui/material/Box";
 import Fab from "@mui/material/Fab";
@@ -414,8 +414,8 @@ export const SpinnChart = () => {
 
 
   return (
-    <div className="chartLeft  p-1 rounded text-white my-2" id="">
-      <h5 className="ps-2 overflow-hidden text-dark">Live Learning Activity</h5>
+    <div className="chartLeft  p-1 rounded  my-2" id="">
+      <Box className="ps-2 overflow-hidden">Live Learning Activity</Box>
       <div className="overflow-hidden w-100" id="apx-spining-chart">
       </div>
     </div>
@@ -731,6 +731,99 @@ export const CourseProgressTabel = () => {
   );
 };
 
+// export const MixedBargraph = () => {
+//   let options = {
+//     series: [{
+//       name: 'Inflation',
+//       data: [2.3, 3.1, 4.0, 6.1, 4.0, 3.6, 3.2, 2.3, 1.4, 0.8, 0.5, 0.2]
+//     }],
+//     chart: {
+//       height: "90px",
+//       width: "100%",
+//       type: 'bar',
+//     },
+//     plotOptions: {
+//       bar: {
+//         borderRadius: 20,
+//         dataLabels: {
+//           position: 'top', // top, center, bottom
+//         },
+//       }
+//     },
+//     dataLabels: {
+//       enabled: true,
+//       formatter: function (val) {
+//         return val + "%";
+//       },
+//       offsetY: -20,
+//       style: {
+//         fontSize: '12px',
+//         colors: ["#304758"]
+//       }
+//     },
+
+//     xaxis: {
+//       categories: ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"],
+//       position: 'top',
+//       axisBorder: {
+//         show: false
+//       },
+//       axisTicks: {
+//         show: false
+//       },
+//       crosshairs: {
+//         fill: {
+//           type: 'gradient',
+//           gradient: {
+//             colorFrom: '#D8E3F0',
+//             colorTo: '#BED1E6',
+//             stops: [0, 100],
+//             opacityFrom: 0.4,
+//             opacityTo: 0.5,
+//           }
+//         }
+//       },
+//       tooltip: {
+//         enabled: true,
+//       }
+//     },
+//     yaxis: {
+//       axisBorder: {
+//         show: false
+//       },
+//       axisTicks: {
+//         show: false,
+//       },
+//       labels: {
+//         show: false,
+//         formatter: function (val) {
+//           return val + "%";
+//         }
+//       }
+
+//     },
+//     title: {
+//       text: 'Monthly Inflation in Argentina, 2002',
+//       floating: true,
+//       offsetY: 330,
+//       align: 'center',
+//       style: {
+//         color: '#444'
+//       }
+//     }
+//   };
+
+//   var chart = new ApexCharts(document.querySelector("#barchart"), options);
+//   chart.render();
+
+//   return (
+//     <div className="d-block w-100 h-100 mixedChart">
+//       <div id="barchart" className="p-2">
+//       </div>
+//     </div>
+//   );
+// };
+
 export const MixedBargraph = () => {
   const [spine, setSpine] = useState({
     series: [
@@ -748,6 +841,7 @@ export const MixedBargraph = () => {
     options: {
       chart: {
         height: 250,
+        width: 100,
         type: "line",
         stacked: false,
       },
@@ -814,13 +908,13 @@ export const MixedBargraph = () => {
 
   return (
     <div className="d-block w-100 h-100 mixedChart">
-      <div id="chart" className="p-2">
+      <div id="chart" className="">
         <ReactApexCharts
           options={spine.options}
           series={spine.series}
           type="line"
           height="auto"
-          width="80%"
+          width="95%"
         />
       </div>
     </div>
@@ -859,7 +953,7 @@ const Promotion = () => {
   )
 }
 
-const Notify = () => {
+export const Notify = () => {
   return (<>
     <h3 className="w-100 bg-light p-2"> Assignment due today</h3>
     <ol class="list-group list-group-numbered">
@@ -902,10 +996,38 @@ const Notify = () => {
   </>)
 }
 
-const ProgressChart = () => {
+// export const ProgressChart = () => {
+//   var options = {
+//     series: [44, 55, 41, 17, 15],
+//     chart: {
+//     type: 'donut',
+//   },
+//   responsive: [{
+//     breakpoint: 480,
+//     options: {
+//       chart: {
+//         width: 40
+//       },
+//       legend: {
+//         position: 'bottom'
+//       }
+//     }
+//   }]
+//   };
+
+//   let chart = new ApexCharts(document.querySelector("#donatChart"), options);
+//   chart.render();
+
+//   return (
+//     <div className="gradeProgress">
+//       <div id="donatChart" > </div>
+//     </div>
+//   );
+// };
+export const ProgressChart = () => {
   var options = {
     chart: {
-      height: 250,
+      height: "700px",
       type: "radialBar",
     },
 
@@ -956,16 +1078,76 @@ const ProgressChart = () => {
     labels: ["Your GPA"],
   };
 
-  // var chart = new ApexCharts(document.querySelector("#prochart"), options);
-  // chart.render();
+  var chart = new ApexCharts(document.querySelector("#donatChart"), options);
+  chart.render();
 
   return (
     <div className="gradeProgress">
-      <div className=" overflow-hidden ps-1">
-        <h5 className="">
-          Total Score</h5>
-      </div>
-      <div id="prochart" > </div>
+      <h5 className="">
+        Total Score</h5>
+      <div id="donatChart" > </div>
     </div>
   );
 };
+
+
+export const ColGraph = () => {
+  let options = {
+    series: {
+      name: 'PRODUCT A',
+      data: [44, 55, 41, 67, 22, 43]
+    },
+    chart: {
+      type: 'bar',
+      height: 120,
+      stacked: true,
+      toolbar: {
+        show: true
+      },
+      zoom: {
+        enabled: true
+      }
+    },
+    responsive: [{
+      breakpoint: 480,
+      options: {
+        legend: {
+          position: 'bottom',
+          offsetX: -10,
+          offsetY: 0
+        }
+      }
+    }],
+    plotOptions: {
+      bar: {
+        horizontal: false,
+      },
+    },
+    xaxis: {
+      type: 'datetime',
+      categories: ['01/01/2011 GMT', '01/02/2011 GMT', '01/03/2011 GMT', '01/04/2011 GMT',
+        '01/05/2011 GMT', '01/06/2011 GMT'
+      ],
+    },
+    legend: {
+      position: 'right',
+      offsetY: 40
+    },
+    fill: {
+      opacity: 1
+    }
+  };
+
+  var chart = new ApexCharts(document.querySelector("#colgraph"), options);
+  chart.render();
+
+
+
+  return (
+    <div id="colgraph">
+
+    </div>
+  )
+}
+
+

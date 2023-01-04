@@ -202,12 +202,12 @@ export const ColorModeContext = createContext({
 
 export const useMode = () => {
   const user = useSelector((state) => state.auth.user?.featured);
-  const [mode, setMode] = useState(user?.featured? "dark" : "light");
+  const [mode, setMode] = useState(user?.featured? "light" : "dark");
 
   const colorMode = useMemo(
     () => ({
       toggleColorMode: () =>
-        setMode((prevMode) => (prevMode === "dark" ? "light" : "dark"))
+        setMode((prevMode) => (prevMode == "dark" ? "light" : "dark"))
     }),
     []
   );

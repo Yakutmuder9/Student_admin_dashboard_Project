@@ -1,4 +1,4 @@
-.dashActive{
+/* .dashActive{
   width: 50vw;
   height: 250vh!important;
 }
@@ -6,7 +6,7 @@
     background: var(--nav-background)!important;
     color: white!important;
     box-shadow: 2px 4px 12px black!important;
-}
+} 
 .advideo{
   width: 100%;
 }
@@ -25,7 +25,7 @@
     border-radius: 15px;
     height: 80%;
     box-shadow: 2px 4px 6px;
-}
+}*/
 /*----Spinning Cart styels----------*/
 foreignObject{
   color: black!important;
@@ -82,7 +82,7 @@ foreignObject{
   }
   
 
-
+/* 
   @media (max-width: 1200px) {
     #dashFullfil {
       height: auto;
@@ -102,4 +102,4 @@ foreignObject{
     height: 60%!important;
   }
 
- 
+  */

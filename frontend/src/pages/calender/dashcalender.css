@@ -1,0 +1,103 @@
+.calendar {
+  color: #ccc;
+  float: left;
+  font-family: "Lato", sans-serif;
+  height: 430px;
+  margin-left: 50%;
+  margin-top: 25px;
+  position: relative;
+  transform: translateX(-50%);
+  width: 400px;
+}
+
+.calendar-header {
+  /* background-color: #555; */
+  float: left;
+  font-size: 18px;
+  height: 50px;
+  line-height: 2.78;
+  position: relative;
+  text-align: center;
+  width: 100%;
+}
+
+.button-container {
+  height: 100%;
+  position: relative;
+}
+.button-container--left {
+  float: left;
+}
+.button-container--right {
+  float: right;
+}
+
+.button-content {
+  background-color: transparent;
+  border: 0;
+  cursor: pointer;
+  float: left;
+  height: 100%;
+  padding-left: 15px;
+  position: relative;
+  transition: background 0.3s ease;
+}
+.button-content:hover {
+  background-color: #666;
+}
+.button-content:focus {
+  outline: 0;
+}
+.button-content--left::before {
+  border-bottom: 8px solid transparent;
+  border-right: 8px solid #888;
+  border-top: 8px solid transparent;
+  content: "";
+  display: inline-block;
+  height: 0;
+  margin-right: 10px;
+  vertical-align: middle;
+  width: 0;
+}
+.button-content--right::before {
+  border-bottom: 8px solid transparent;
+  border-left: 8px solid #888;
+  border-top: 8px solid transparent;
+  content: "";
+  display: inline-block;
+  height: 0;
+  margin-right: 10px;
+  vertical-align: middle;
+  width: 0;
+}
+
+.week {
+  float: left;
+  width: 100%;
+}
+
+.weekday {
+  /* background-color: #444; */
+  float: left;
+  height: 40px;
+  line-height: 2.5;
+  text-align: center;
+  width: 14.28%;
+}
+
+.day {
+  /* background-color: #fc08082b; */
+  box-sizing: border-box;
+  float: left;
+  font-weight: 300;
+  height: 50px;
+  padding: 10px 0;
+  position: relative;
+  text-align: center;
+  transition: background 0.2s ease;
+  width: 14.28%;
+  z-index: 999;
+}
+.day--soft {
+  color: #565656;
+}

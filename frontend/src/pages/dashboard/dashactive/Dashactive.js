@@ -11,19 +11,24 @@ import {
     Button,
     IconButton,
     Avatar,
-    Card
+    Card,
+    MenuItem,
+    Select,
+    InputLabel,
+    FormControl,
+    FormGroup,
+    Checkbox,
+    FormControlLabel
 } from "@mui/material";
 import {
     ExpandMore, NotificationsNone
-    , MarkChatUnread, DownloadOutlined, Analytics, Stars, Groups
+    , MarkChatUnread, DownloadOutlined, Analytics, Stars, Groups, MoreVert, ChevronRight
 } from "@mui/icons-material";
 import { tokens } from "../../../theme";
-import { styled } from '@mui/material/styles';
-import { mockTransactions } from "../../../data/mockData";
 import Header from "../../../components/header/Header";
 
 import { useContext, useState } from "react";
-import { ColorModeContext, useMode } from "../../../theme";
+import { ColorModeContext } from "../../../theme";
 import { InputBase } from "@mui/material";
 import LightModeOutlinedIcon from "@mui/icons-material/LightModeOutlined";
 import DarkModeOutlinedIcon from "@mui/icons-material/DarkModeOutlined";
@@ -36,17 +41,9 @@ import { useDispatch, useSelector } from "react-redux";
 import { useEffect } from "react";
 import Badge from './Badge';
 import CardHeader from '@mui/material/CardHeader';
-import axios from 'axios';
-import Topbar from "../../../components/global/Topbar";
 import { MdLogout } from "react-icons/md";
-import { MixedBargraph, SpinnChart } from "./SpinnChart";
-
-const Item = styled(Paper)(({ theme }) => ({
-    backgroundColor: theme.palette.mode === 'dark' ? '#1A2027' : '#fff',
-    ...theme.typography.body2,
-    textAlign: 'center',
-    color: theme.palette.text.secondary,
-}));
+import { ColGraph, MixedBargraph, Notify, ProgressChart, SpinnChart } from "./SpinnChart";
+import { DashCalendar } from "../../calender/DashCalender";
 
 
 const Dashactive = () => {
@@ -59,6 +56,7 @@ const Dashactive = () => {
     const dispatch = useDispatch()
     const user = useSelector((state) => state.auth?.user);
     const [themeToggle, setThemeToggle] = useState(true)
+    const [age, setAge] = useState('');
 
     const toggleStatus = async () => {
         const themeStatus = { featured: themeToggle }
@@ -77,6 +75,11 @@ const Dashactive = () => {
     useEffect(() => {
 
     }, [dispatch, user])
+
+
+    const handleChange = (event) => {
+        setAge(event.target.value);
+    };
 
     return (
         <div className="analytics-activity-dashboard ">
@@ -143,7 +146,8 @@ const Dashactive = () => {
                                     title="Overall Engagment"
                                     subheader="16h / Weekly"
                                 />
-                            </Card></Grid>
+                            </Card>
+                        </Grid>
 
                         <Grid item xs={6} sm={4}>
                             <Card sx={{ height: "70px" }}>
@@ -174,37 +178,141 @@ const Dashactive = () => {
                             </Card>
                         </Grid>
                     </Grid>
-                {/* ---- Active hours */}
+
+
+                    {/* ---- Active hours */}
                     <Grid container display={smScreen ? "flex" : "block"} spacing={1} mt={1}  >
                         <Grid item xs={12} sm={7} >
 
-                            <Box >
-                                <Card className="p-3" sx={{ height: '320px' }}>
-                                    Active Hours
-                                    <MixedBargraph />
+                            <Box>
+                                <Card className="p-3" sx={{ height: '320px', display: "flex", justifyContent: "space-between" }}>
+                                    <Box>
+                                        Active Hours
+                                        <MixedBargraph />
+                                        Control Your Activity
+                                    </Box>
+                                    <Box className=" active-hours-graph-container ">
+                                        <Box sx={{ minWidth: 120 }}>
+                                            <FormControl fullWidth>
+                                                <InputLabel id="demo-simple-select-label">time</InputLabel>
+                                                <Select
+                                                    labelId="demo-simple-select-label"
+                                                    id="demo-simple-select"
+                                                    value={age}
+                                                    label="Age"
+                                                    onChange={handleChange}
+                                                >
+                                                    <MenuItem value={10}>Daily</MenuItem>
+                                                    <MenuItem value={20}>Weekly</MenuItem>
+                                                    <MenuItem value={30}>Monthly</MenuItem>
+                                                </Select>
+                                            </FormControl>
+                                        </Box>
+                                        <Box className="lisit-active-hours d-flex flex-column justify-content-between  " sx={{ height: "200px" }}>
+                                            <Box className="time-spent-card mt-4 ">
+                                                <Typography sx={{ fontSize: "10px" }}>Time Spent</Typography>
+                                                <Box sx={{ fontSize: "14px" }}>15 <span style={{ fontSize: "9px", background: "#fc08082b", borderRadius: "25%", padding: "2px 8px" }}>73%</span></Box>
+                                            </Box>
+                                            <Box className="time-spent-card">
+                                                <Typography sx={{ fontSize: "10px" }}>Lesson Taken</Typography>
+                                                <Box sx={{ fontSize: "14px" }}>23 <span style={{ fontSize: "9px", background: "#f9f1caab", borderRadius: "25%", padding: "2px 8px" }}>83%</span></Box>
+                                            </Box>
+                                            <Box className="exam-passed-card">
+                                                <Typography sx={{ fontSize: "10px" }}>Exam Passed</Typography>
+                                                <Box sx={{ fontSize: "14px" }}>12 <span style={{ fontSize: "9px", background: "#caf9e2ab", borderRadius: "25%", padding: "2px 8px" }}>90%</span></Box>
+                                            </Box>
+                                        </Box>
+                                    </Box>
                                 </Card>
-                                <Box>
-                                </Box>
+
                             </Box>
                         </Grid>
                         <Grid item xs={12} sm={5}>
                             <Box >
                                 <Card className="p-3" sx={{ height: '320px' }}>
-                                    Performance
+                                    Overall Activity
+
+                                    <Paper variant="outlined" className="mt-1" >
+                                        <Card>
+                                            <CardHeader
+                                                title="24.54%"
+                                                subheader="Quesions"
+                                            />
+                                        </Card>
+                                    </Paper>
+
+                                    <Paper variant="outlined" className="mt-1" >
+                                        <Card>
+                                            <CardHeader
+                                                title="65.78%"
+                                                subheader="Answers"
+                                            />
+                                        </Card>
+                                    </Paper>
+                                    
+                                    <Paper variant="outlined" className="mt-1" >
+                                        <Card>
+                                            <CardHeader
+                                                title="98.65%"
+                                                subheader="Assessments"
+                                            />
+                                        </Card>
+                                    </Paper>
                                 </Card>
 
                             </Box>
                         </Grid>
                     </Grid>
 
-                {/*------- Enrolled Class */}
+                    {/*------- Enrolled Class */}
                     <Grid container display={smScreen ? "flex" : "block"} spacing={1} mt={1}>
 
                         <Grid item xs={12} sm={7} >
                             <Box >
                                 <Card className="p-3" sx={{ height: '330px' }}>
-                                    Enrolled Class
+                                    Enrolled Classes
+                                    <CardHeader
+                                        sx={{ borderLeft: "5px solid #8A97FB", margin: "10px 2px", padding: "5px 15px" }}
+                                        action={
+                                            <IconButton aria-label="settings">
+                                                <ChevronRight />
+                                            </IconButton>
+                                        }
+                                        title="Fundamental Physics"
+                                        subheader="September 14, 2016"
+                                    />
+                                    <CardHeader
+                                        sx={{ borderLeft: "5px solid #D0FB8A", margin: "10px 2px", padding: "5px 15px" }}
+                                        action={
+                                            <IconButton aria-label="settings">
+                                                <ChevronRight />
+                                            </IconButton>
+                                        }
+                                        title="The Laws of Gravity"
+                                        subheader="September 14, 2016"
+                                    />
+                                    <CardHeader
+                                        sx={{ borderLeft: "5px solid #FB8AB3", margin: "10px 2px", padding: "5px 15px" }}
+                                        action={
+                                            <IconButton aria-label="settings">
+                                                <ChevronRight />
+                                            </IconButton>
+                                        }
+                                        title="Communication and Speach"
+                                        subheader="September 14, 2016"
+                                    />
+                                    <CardHeader
+                                        sx={{ borderLeft: "5px solid #fff123", margin: "10px 2px", padding: "5px 15px" }}
+                                        action={
+                                            <IconButton aria-label="settings">
+                                                <ChevronRight />
+                                            </IconButton>
+                                        }
+                                        title="Motions Dynamics"
+                                        subheader="September 14, 2016"
+                                    />
                                 </Card>
+
 
                             </Box>
                         </Grid>
@@ -219,8 +327,18 @@ const Dashactive = () => {
 
 
                             <Box >
-                                <Card className="mt-2 p-3" sx={{ height: '82px' }}>
-                                    Enrolled Class
+                                <Card className="mt-2 p-2" sx={{ height: '82px' }}>
+                                    <CardHeader
+                                        avatar={
+                                            // <Avatar sx={{ backgroundColor: colors.blueAccent[100] }}>
+                                            //     <Analytics />
+                                            // </Avatar>
+                                            // <div>R</div>
+                                            <ProgressChart />
+                                        }
+                                        title="Overall Engagment"
+                                        subheader="16h / Weekly"
+                                    />
                                 </Card>
 
                             </Box>
@@ -231,7 +349,7 @@ const Dashactive = () => {
                 </Grid>
 
 
-                <Grid p={2} item xs={12} md={4}
+                <Grid item xs={12} md={4}
                     sx={{
                         // backgroundColor: colors.blueAccent[100],
                         // backgroundColor: "#99DAFF",
@@ -239,7 +357,7 @@ const Dashactive = () => {
                         fontSize: "14px",
                         backdropFilter: "blur(8px)",
                         fontWeight: "bold",
-                        padding: "10px 20px",
+                        padding: "10px 2% 10px 0px",
                     }}
                 >
 
@@ -281,38 +399,56 @@ const Dashactive = () => {
                         <Grid item xs={6} md={12}>
                             <Box className="mt-2">
                                 <Box>
-                                    Upcommig Events
+                                    Calendar
                                 </Box>
-                                <Card className="mt-2 p-2" sx={{ height: '220px' }}>
-                                    Upcommig Events
+                                <Card sx={{ height: '320px' }}>
+                                    <DashCalendar />
                                 </Card>
 
                             </Box>
                         </Grid>
 
                         <Grid item xs={6} md={12}>
-                            <Box className="" sx={{ height: '240px' }}>
+                            <Box>
                                 <Box>
-                                    Assignments
+                                    Assignments Due
                                 </Box>
-                                <Card className="mt-2 p-2" sx={{ height: '220px' }}>
-                                    Upcommig Assignments
+                                <Card className="mt-2 px-2 py-2" sx={{ height: '385px' }}>
+                                <Paper  variant="outlined" className="my-1 p-1">
+                                    <FormGroup>
+                                        <FormControlLabel control={<Checkbox defaultChecked color="success" />} label="Label" />
+                                    </FormGroup>
+                                </Paper>
+                                <Paper  variant="outlined" className="my-1 p-1">
+                                    <FormGroup>
+                                        <FormControlLabel control={<Checkbox defaultChecked color="success" />} label="Label" />
+                                    </FormGroup>
+                                </Paper>
+                                <Paper  variant="outlined" className="my-1 p-1">
+                                    <FormGroup>
+                                        <FormControlLabel control={<Checkbox  color="success" />} label="Label" />
+                                    </FormGroup>
+                                </Paper>
+                                <Paper  variant="outlined" className="my-1 p-1">
+                                    <FormGroup>
+                                        <FormControlLabel control={<Checkbox  color="success" />} label="Label" />
+                                    </FormGroup>
+                                </Paper>
+                                <Paper  variant="outlined" className="my-1 p-1">
+                                    <FormGroup>
+                                        <FormControlLabel control={<Checkbox  color="success" />} label="Label" />
+                                    </FormGroup>
+                                </Paper>
+                                <Paper  variant="outlined" className="my-1 p-1">
+                                    <FormGroup>
+                                        <FormControlLabel control={<Checkbox  color="success" />} label="Label" />
+                                    </FormGroup>
+                                </Paper>
                                 </Card>
 
                             </Box>
                         </Grid>
 
-                        <Grid item xs={6} md={12}>
-                            <Box sx={{color: colors.grey[500]}}>
-                                Notification
-                                <Box>
-                            </Box>
-                                <Card className="mt-2 p-3" sx={{ height: '190px' }}>
-                                    Notification
-                                </Card>
-
-                            </Box>
-                        </Grid>
                     </Grid>
 
 
