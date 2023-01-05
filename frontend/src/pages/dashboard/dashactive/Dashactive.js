@@ -727,22 +727,7 @@ className="analytics-activity-dashboard bg-dark d-flex align-items-center justif
 
     <div className="analytics-title d-flex align-items-center justify-content-between">
         <div className="bg-warning w-100">
-            <Grid container spacing={2}>
-                <Grid item xs={6} md={8}>
-                    <Item>xs=6 md=8</Item>
-                    <Item>xs=6 md=8</Item>
-                    <Item>xs=6 md=8</Item>
-                </Grid>
-                <Grid item xs={6} md={4}>
-                    <Item>xs=6 md=4</Item>
-                </Grid>
-                <Grid item xs={6} md={4}>
-                    <Item>xs=6 md=4</Item>
-                </Grid>
-                <Grid item xs={6} md={8}>
-                    <Item>xs=6 md=8</Item>
-                </Grid>
-            </Grid>
+        
         </div>
 
 
