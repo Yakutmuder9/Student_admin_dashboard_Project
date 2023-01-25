@@ -1,2 +1,2 @@
 # wolkite_university
-Admin dashboard
+Student dashboard
